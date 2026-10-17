@@ -4,6 +4,7 @@
   "scripts": {
     "postinstall": "npm install --prefix frontend",
     "start": "npm start --prefix frontend",
-    "dev": "npm start --prefix frontend"
+    "dev": "npm start --prefix frontend",
+    "dev:api": "npm run dev --prefix backend"
   }
 }

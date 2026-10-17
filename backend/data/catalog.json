@@ -1,0 +1,701 @@
+{
+  "categories": [
+    {
+      "id": "cat-f-bermuda",
+      "name": "Bermuda",
+      "slug": "bermuda",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-f-calca",
+      "name": "Calça",
+      "slug": "calca",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-f-blusa",
+      "name": "Blusa",
+      "slug": "blusa",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-f-intima",
+      "name": "Íntima",
+      "slug": "intima",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-f-meia-calca",
+      "name": "Meia-calça",
+      "slug": "meia-calca",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-f-pijama",
+      "name": "Pijama",
+      "slug": "pijama",
+      "gender": "female",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-intimo",
+      "name": "Íntimo",
+      "slug": "intimo",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-meia",
+      "name": "Meia",
+      "slug": "meia",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-pijama",
+      "name": "Pijama",
+      "slug": "pijama",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-gravata",
+      "name": "Gravata",
+      "slug": "gravata",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-cinto",
+      "name": "Cinto",
+      "slug": "cinto",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-bermuda",
+      "name": "Bermuda",
+      "slug": "bermuda",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-calca",
+      "name": "Calça",
+      "slug": "calca",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-camiseta",
+      "name": "Camiseta",
+      "slug": "camiseta",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-roupa",
+      "name": "Roupa",
+      "slug": "roupa",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-esportiva",
+      "name": "Esportiva",
+      "slug": "esportiva",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-chapeu",
+      "name": "Chapéu",
+      "slug": "chapeu",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-terno",
+      "name": "Terno",
+      "slug": "terno",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "cat-m-camisa-social",
+      "name": "Camisa social",
+      "slug": "camisa-social",
+      "gender": "male",
+      "status": "active",
+      "createdAt": "2026-09-01T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "demo-blusa-linho",
+      "name": "Blusa de linho",
+      "slug": "blusa-de-linho-demonstracao",
+      "description": "Peça fictícia para demonstrar o catálogo.",
+      "price": 89.9,
+      "gender": "female",
+      "categoryId": "cat-f-blusa",
+      "sizes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "colors": [
+        "Off-white",
+        "Verde musgo"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1752825609278-f9696bc9d7bd?w=600&h=750&fit=crop&auto=format",
+          "alt": "Mulher usando blusa de linho branca",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-18T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 149.9
+    },
+    {
+      "id": "demo-calca-reta",
+      "name": "Calça reta",
+      "slug": "calca-reta-demonstracao",
+      "description": "Peça fictícia para demonstrar a listagem.",
+      "price": 149.9,
+      "gender": "female",
+      "categoryId": "cat-f-calca",
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "colors": [
+        "Areia",
+        "Preto"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/3701283/pexels-photo-3701283.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Calça reta feminina bege",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-12T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 249.9
+    },
+    {
+      "id": "demo-bermuda-feminina",
+      "name": "Bermuda alfaiataria",
+      "slug": "bermuda-alfaiataria-demonstracao",
+      "description": "Peça fictícia da categoria Bermuda.",
+      "price": 99.9,
+      "gender": "female",
+      "categoryId": "cat-f-bermuda",
+      "sizes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "colors": [
+        "Bege"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/18173611/pexels-photo-18173611.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Bermuda alfaiataria feminina bege",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 3,
+      "createdAt": "2026-09-08T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 169.9
+    },
+    {
+      "id": "demo-pijama-feminino",
+      "name": "Pijama curto",
+      "slug": "pijama-curto-demonstracao",
+      "description": "Peça fictícia marcada como indisponível.",
+      "price": 79.9,
+      "gender": "female",
+      "categoryId": "cat-f-pijama",
+      "sizes": [
+        "P",
+        "M"
+      ],
+      "colors": [
+        "Rosa queimado"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/20356186/pexels-photo-20356186.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Pijama curto de cetim branco",
+          "isPrimary": true
+        }
+      ],
+      "available": false,
+      "featured": false,
+      "displayOrder": 4,
+      "createdAt": "2026-09-22T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 139.9
+    },
+    {
+      "id": "demo-camiseta",
+      "name": "Camiseta básica",
+      "slug": "camiseta-basica-demonstracao",
+      "description": "Peça fictícia masculina em destaque.",
+      "price": 59.9,
+      "gender": "male",
+      "categoryId": "cat-m-camiseta",
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "colors": [
+        "Branco",
+        "Marinho"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=750&fit=crop&auto=format",
+          "alt": "Camiseta básica branca",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-21T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 99.9
+    },
+    {
+      "id": "demo-camisa-social",
+      "name": "Camisa social",
+      "slug": "camisa-social-demonstracao",
+      "description": "Peça fictícia de camisa social.",
+      "price": 129.9,
+      "gender": "male",
+      "categoryId": "cat-m-camisa-social",
+      "sizes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "colors": [
+        "Branco",
+        "Azul claro"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&h=750&fit=crop&auto=format",
+          "alt": "Camisa social azul clara",
+          "isPrimary": true
+        },
+        {
+          "url": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Homem usando camisa social azul clara",
+          "isPrimary": false
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-15T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 219.9
+    },
+    {
+      "id": "demo-bermuda-masculina",
+      "name": "Bermuda sarja",
+      "slug": "bermuda-sarja-demonstracao",
+      "description": "Peça fictícia para a busca por bermuda.",
+      "price": 109.9,
+      "gender": "male",
+      "categoryId": "cat-m-bermuda",
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "colors": [
+        "Caqui"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1697319452360-ee47502e39f6?w=600&h=750&fit=crop&auto=format",
+          "alt": "Bermuda sarja masculina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 4,
+      "createdAt": "2026-09-19T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 189.9
+    },
+    {
+      "id": "demo-blusa-listrada",
+      "name": "Blusa listrada",
+      "slug": "blusa-listrada-demonstracao",
+      "description": "Blusa com listras horizontais, caimento leve e tecido respirável.",
+      "price": 74.9,
+      "gender": "female",
+      "categoryId": "cat-f-blusa",
+      "sizes": ["P", "M", "G", "GG"],
+      "colors": ["Azul marinho", "Vermelho"],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Blusa listrada azul e branca",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 5,
+      "createdAt": "2026-09-23T12:00:00.000Z",
+      "updatedAt": "2026-09-23T12:00:00.000Z",
+      "compareAtPrice": 119.9
+    },
+    {
+      "id": "demo-calca-palazzo",
+      "name": "Calça palazzo",
+      "slug": "calca-palazzo-demonstracao",
+      "description": "Calça de perna larga com tecido fluido e cintura alta.",
+      "price": 169.9,
+      "gender": "female",
+      "categoryId": "cat-f-calca",
+      "sizes": ["36", "38", "40", "42", "44"],
+      "colors": ["Bege", "Preto"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1684214553643-71d8d6234e09?w=600&h=750&fit=crop&auto=format",
+          "alt": "Calça palazzo de perna larga",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 6,
+      "createdAt": "2026-09-24T12:00:00.000Z",
+      "updatedAt": "2026-09-24T12:00:00.000Z",
+      "compareAtPrice": 269.9
+    },
+    {
+      "id": "demo-bermuda-jeans-f",
+      "name": "Bermuda jeans",
+      "slug": "bermuda-jeans-feminina-demonstracao",
+      "description": "Bermuda jeans com cintura alta e acabamento desfiado.",
+      "price": 119.9,
+      "gender": "female",
+      "categoryId": "cat-f-bermuda",
+      "sizes": ["36", "38", "40", "42"],
+      "colors": ["Azul claro", "Azul escuro"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=750&fit=crop&auto=format",
+          "alt": "Bermuda jeans feminina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 7,
+      "createdAt": "2026-09-25T12:00:00.000Z",
+      "updatedAt": "2026-09-25T12:00:00.000Z",
+      "compareAtPrice": 189.9
+    },
+    {
+      "id": "demo-pijama-longo-f",
+      "name": "Pijama longo de cetim",
+      "slug": "pijama-longo-cetim-demonstracao",
+      "description": "Pijama longo com calça e camisa de cetim, caimento suave.",
+      "price": 139.9,
+      "gender": "female",
+      "categoryId": "cat-f-pijama",
+      "sizes": ["P", "M", "G"],
+      "colors": ["Rosa nude", "Marfim"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1770294758981-484ef12c1815?w=600&h=750&fit=crop&auto=format",
+          "alt": "Pijama longo de cetim rosa",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 8,
+      "createdAt": "2026-09-26T12:00:00.000Z",
+      "updatedAt": "2026-09-26T12:00:00.000Z",
+      "compareAtPrice": 219.9
+    },
+    {
+      "id": "demo-camiseta-polo",
+      "name": "Camiseta polo",
+      "slug": "camiseta-polo-demonstracao",
+      "description": "Polo com gola e botões, tecido piquet de algodão.",
+      "price": 89.9,
+      "gender": "male",
+      "categoryId": "cat-m-camiseta",
+      "sizes": ["P", "M", "G", "GG"],
+      "colors": ["Branco", "Verde musgo", "Bege"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1625910513399-c9fcba54338c?w=600&h=750&fit=crop&auto=format",
+          "alt": "Homem usando camiseta polo preta",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 5,
+      "createdAt": "2026-09-27T12:00:00.000Z",
+      "updatedAt": "2026-09-27T12:00:00.000Z",
+      "compareAtPrice": 149.9
+    },
+    {
+      "id": "demo-camisa-xadrez",
+      "name": "Camisa xadrez",
+      "slug": "camisa-xadrez-demonstracao",
+      "description": "Camisa social xadrez slim fit, tecido de algodão.",
+      "price": 109.9,
+      "gender": "male",
+      "categoryId": "cat-m-camisa-social",
+      "sizes": ["1", "2", "3", "4"],
+      "colors": ["Azul/Branco", "Verde/Preto"],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/769733/pexels-photo-769733.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Camisa xadrez masculina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 6,
+      "createdAt": "2026-09-28T12:00:00.000Z",
+      "updatedAt": "2026-09-28T12:00:00.000Z",
+      "compareAtPrice": 179.9
+    },
+    {
+      "id": "demo-bermuda-sport",
+      "name": "Bermuda esportiva",
+      "slug": "bermuda-esportiva-demonstracao",
+      "description": "Bermuda com elástico, bolsos laterais e tecido dry-fit.",
+      "price": 79.9,
+      "gender": "male",
+      "categoryId": "cat-m-bermuda",
+      "sizes": ["P", "M", "G", "GG"],
+      "colors": ["Preto", "Cinza", "Marinho"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1591741543032-bf439b4fd46c?w=600&h=750&fit=crop&auto=format",
+          "alt": "Bermuda esportiva masculina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 7,
+      "createdAt": "2026-09-29T12:00:00.000Z",
+      "updatedAt": "2026-09-29T12:00:00.000Z",
+      "compareAtPrice": 129.9
+    },
+    {
+      "id": "demo-calca-jeans-m",
+      "name": "Calça jeans slim",
+      "slug": "calca-jeans-slim-demonstracao",
+      "description": "Calça jeans com corte slim, lavagem média e cinco bolsos.",
+      "price": 189.9,
+      "gender": "male",
+      "categoryId": "cat-m-calca",
+      "sizes": ["38", "40", "42", "44", "46"],
+      "colors": ["Azul médio", "Azul escuro"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=750&fit=crop&auto=format",
+          "alt": "Calça jeans slim masculina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 8,
+      "createdAt": "2026-09-30T12:00:00.000Z",
+      "updatedAt": "2026-09-30T12:00:00.000Z",
+      "compareAtPrice": 299.9
+    },
+    {
+      "id": "demo-terno",
+      "name": "Terno clássico",
+      "slug": "terno-classico-demonstracao",
+      "description": "Terno de dois botões com lapela notch, forro completo.",
+      "price": 599.9,
+      "gender": "male",
+      "categoryId": "cat-m-terno",
+      "sizes": ["48", "50", "52", "54"],
+      "colors": ["Marinho", "Carvão"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=750&fit=crop&auto=format",
+          "alt": "Homem vestindo terno marinho clássico",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 9,
+      "createdAt": "2026-10-01T12:00:00.000Z",
+      "updatedAt": "2026-10-01T12:00:00.000Z",
+      "compareAtPrice": 899.9
+    },
+    {
+      "id": "demo-pijama-m",
+      "name": "Pijama masculino",
+      "slug": "pijama-masculino-demonstracao",
+      "description": "Conjunto de pijama com calça e camisa de botões, algodão.",
+      "price": 99.9,
+      "gender": "male",
+      "categoryId": "cat-m-pijama",
+      "sizes": ["P", "M", "G", "GG"],
+      "colors": ["Azul listrado", "Cinza"],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/20364756/pexels-photo-20364756.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Pijama masculino preto com vivo branco",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 10,
+      "createdAt": "2026-10-02T12:00:00.000Z",
+      "updatedAt": "2026-10-02T12:00:00.000Z",
+      "compareAtPrice": 159.9
+    }
+  ],
+  "banners": [
+    {
+      "id": "banner-vitrine",
+      "title": "Roupas para viver",
+      "subtitle": "Conforto, estilo e qualidade para o dia a dia. Peças da Sempre-Viva, em Gravatá.",
+      "imageUrl": "https://images.pexels.com/photos/8387810/pexels-photo-8387810.jpeg?auto=compress&cs=tinysrgb&w=1400&h=600&fit=crop",
+      "link": "/produtos",
+      "placement": "hero",
+      "active": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "banner-vitrine-2",
+      "title": "Roupas para viver",
+      "subtitle": "Conforto, estilo e qualidade para o dia a dia. Peças da Sempre-Viva, em Gravatá.",
+      "imageUrl": "https://images.pexels.com/photos/5531746/pexels-photo-5531746.jpeg?auto=compress&cs=tinysrgb&w=1400&h=600&fit=crop",
+      "link": "/produtos",
+      "placement": "hero",
+      "active": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "banner-vitrine-3",
+      "title": "Roupas para viver",
+      "subtitle": "Conforto, estilo e qualidade para o dia a dia. Peças da Sempre-Viva, em Gravatá.",
+      "imageUrl": "https://images.pexels.com/photos/5865196/pexels-photo-5865196.jpeg?auto=compress&cs=tinysrgb&w=1400&h=600&fit=crop",
+      "link": "/produtos",
+      "placement": "hero",
+      "active": true,
+      "displayOrder": 3,
+      "createdAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "banner-feminino",
+      "title": "Feminino",
+      "subtitle": "Ver categorias",
+      "imageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&h=500&fit=crop&auto=format",
+      "link": "/produtos/feminino",
+      "placement": "middle",
+      "active": true,
+      "displayOrder": 1,
+      "createdAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    },
+    {
+      "id": "banner-masculino",
+      "title": "Masculino",
+      "subtitle": "Ver categorias",
+      "imageUrl": "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=900&h=500&fit=crop&auto=format",
+      "link": "/produtos/masculino",
+      "placement": "middle",
+      "active": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z"
+    }
+  ]
+}
