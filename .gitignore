@@ -1,0 +1,15 @@
+node_modules/
+frontend/node_modules/
+frontend/www/
+frontend/dist/
+frontend/.angular/
+frontend/.ionic/
+backend/node_modules/
+backend/dist/
+backend/data/carts.json
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db

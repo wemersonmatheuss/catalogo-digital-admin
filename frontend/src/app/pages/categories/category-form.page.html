@@ -1,0 +1,44 @@
+<a class="quiet" routerLink="/categorias">Voltar</a>
+
+@if (missing()) {
+  <h1>Categoria não encontrada</h1>
+} @else {
+  <header class="page-head">
+    <div>
+      <h1>{{ editingId ? 'Editar categoria' : 'Nova categoria' }}</h1>
+      <p class="lead">O endereço da categoria é gerado a partir do nome.</p>
+    </div>
+  </header>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Nome
+      <input type="text" formControlName="name" />
+    </label>
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <p class="field-error">Informe o nome.</p>
+    }
+
+    <label>
+      Segmento
+      <select formControlName="gender">
+        <option value="female">{{ labels.female }}</option>
+        <option value="male">{{ labels.male }}</option>
+      </select>
+    </label>
+
+    <label>
+      Status
+      <select formControlName="status">
+        <option value="active">Ativa</option>
+        <option value="inactive">Inativa</option>
+      </select>
+    </label>
+
+    @if (formError(); as message) {
+      <p class="field-error" role="alert">{{ message }}</p>
+    }
+
+    <button class="primary" type="submit">Salvar</button>
+  </form>
+}

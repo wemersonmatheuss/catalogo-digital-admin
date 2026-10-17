@@ -1,0 +1,52 @@
+<header class="page-head">
+  <div>
+    <h1>Categorias</h1>
+    <p class="lead">O catálogo público só mostra categorias ativas.</p>
+  </div>
+  <a class="primary" routerLink="/categorias/nova">Nova categoria</a>
+</header>
+
+@if (blockMessage(); as message) {
+  <p class="field-error" role="alert">{{ message }}</p>
+}
+
+@if (categories().length === 0) {
+  <p class="muted" role="status">Nenhuma categoria cadastrada.</p>
+} @else {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Segmento</th>
+          <th>Peças</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (category of categories(); track category.id) {
+          <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ labels[category.gender] }}</td>
+            <td>{{ count(category.id) }}</td>
+            <td>{{ category.status === 'active' ? 'Ativa' : 'Inativa' }}</td>
+            <td>
+              <div class="actions">
+                <a class="quiet" [routerLink]="['/categorias', category.id, 'editar']">Editar</a>
+                <button type="button" class="quiet" (click)="toggle(category.id, category.status !== 'active')">
+                  {{ category.status === 'active' ? 'Desativar' : 'Ativar' }}
+                </button>
+                <button type="button" class="danger" (click)="askDelete(category.id, confirm)">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+
+<app-confirm-dialog #confirm (confirmed)="confirmDelete()">
+  A categoria só pode ser excluída quando não houver peças vinculadas.
+</app-confirm-dialog>

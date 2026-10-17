@@ -1,0 +1,36 @@
+<div class="shell">
+  <header class="topbar">
+    <button type="button" class="menu" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()">
+      Menu
+    </button>
+    <p class="brand">Sempre-Viva <span>Painel</span></p>
+    <p class="who">{{ email() }}</p>
+  </header>
+
+  <div class="body">
+    <nav [class.open]="menuOpen()" aria-label="Painel administrativo">
+      <a routerLink="/dashboard" routerLinkActive="is-active" (click)="closeMenu()">Painel</a>
+      <a routerLink="/produtos" routerLinkActive="is-active" (click)="closeMenu()">Produtos</a>
+      <a routerLink="/banners" routerLinkActive="is-active" (click)="closeMenu()">Banners</a>
+      <a routerLink="/categorias" routerLinkActive="is-active" (click)="closeMenu()">Categorias</a>
+      <a routerLink="/carrinhos" routerLinkActive="is-active" (click)="closeMenu()">Carrinhos</a>
+      <button type="button" (click)="logout()">Sair</button>
+    </nav>
+
+    <main id="conteudo">
+      @if (notice.text(); as message) {
+        <p class="notice" role="status">
+          {{ message }}
+          <button type="button" (click)="notice.clear()">Fechar</button>
+        </p>
+      }
+      @if (catalog.error(); as failure) {
+        <p class="field-error" role="alert">{{ failure }}</p>
+      } @else if (!catalog.ready()) {
+        <p class="muted">Carregando dados do catálogo…</p>
+      } @else {
+        <router-outlet />
+      }
+    </main>
+  </div>
+</div>

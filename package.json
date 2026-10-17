@@ -1,0 +1,9 @@
+{
+  "name": "sempre-viva-admin-app",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix frontend",
+    "start": "npm start --prefix frontend",
+    "dev": "npm start --prefix frontend"
+  }
+}

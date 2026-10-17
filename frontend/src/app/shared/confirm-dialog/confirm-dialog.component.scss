@@ -1,0 +1,46 @@
+dialog {
+  max-width: 28rem;
+  padding: 1.25rem;
+  border: 0;
+  border-radius: 16px;
+}
+
+dialog::backdrop {
+  background: rgba(28, 25, 23, 0.45);
+}
+
+h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+  color: var(--sv-muted);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+button {
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.quiet {
+  border: 1px solid var(--sv-line);
+  background: #fff;
+}
+
+.danger {
+  border: 0;
+  background: #8c3a3a;
+  color: #fff;
+}

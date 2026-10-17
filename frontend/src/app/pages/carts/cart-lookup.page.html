@@ -1,0 +1,44 @@
+<header class="page-head">
+  <div>
+    <h1>Carrinhos</h1>
+    <p class="lead">Busque pelo código que a cliente enviou no WhatsApp para ver as peças escolhidas.</p>
+  </div>
+</header>
+
+<form class="form lookup" (ngSubmit)="search()">
+  <label>
+    Código do carrinho
+    <input name="code" [(ngModel)]="code" placeholder="SV-AB12CD" autocomplete="off" />
+  </label>
+  <button class="primary" type="submit" [disabled]="loading()">
+    {{ loading() ? 'Buscando…' : 'Buscar' }}
+  </button>
+</form>
+
+@if (error(); as message) {
+  <p class="field-error" role="alert">{{ message }}</p>
+}
+
+@if (cart(); as found) {
+  <section class="result">
+    <header>
+      <h2>{{ found.id }}</h2>
+      <p class="muted">Enviado em {{ when(found.createdAt) }}</p>
+    </header>
+    <ul>
+      @for (item of found.items; track item.productId + item.size + item.color) {
+        <li>
+          @if (item.imageUrl) {
+            <img [src]="item.imageUrl" [alt]="item.name" />
+          }
+          <div>
+            <strong>{{ item.name }}</strong>
+            <p>ID da peça: {{ item.productId }}</p>
+            <p>{{ item.size || 'Sem tamanho' }} · {{ item.color || 'Sem cor' }}</p>
+            <p class="price">{{ item.price | brl }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+}

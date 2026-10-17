@@ -1,0 +1,16 @@
+<header class="page-head">
+  <div>
+    <h1>Painel</h1>
+    <p class="lead">Visão rápida do catálogo. Os números vêm dos dados salvos na API local.</p>
+  </div>
+  <a class="primary" routerLink="/produtos/novo">Nova peça</a>
+</header>
+
+<section class="cards" aria-label="Indicadores do catálogo">
+  <article class="card"><span>Produtos</span><strong>{{ stats().products }}</strong></article>
+  <article class="card"><span>Disponíveis</span><strong>{{ stats().available }}</strong></article>
+  <article class="card"><span>Indisponíveis</span><strong>{{ stats().unavailable }}</strong></article>
+  <article class="card"><span>Categorias ativas</span><strong>{{ stats().categories }}</strong></article>
+  <article class="card"><span>Femininos</span><strong>{{ stats().female }}</strong></article>
+  <article class="card"><span>Masculinos</span><strong>{{ stats().male }}</strong></article>
+</section>

@@ -1,0 +1,65 @@
+<a class="quiet" routerLink="/banners">Voltar</a>
+
+@if (missing()) {
+  <h1>Banner não encontrado</h1>
+} @else {
+  <header class="page-head">
+    <div>
+      <h1>{{ editingId ? 'Editar banner' : 'Novo banner' }}</h1>
+      <p class="lead">O banner principal fica no topo. A faixa aparece entre as seções de peças.</p>
+    </div>
+  </header>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Título
+      <input type="text" formControlName="title" />
+    </label>
+    @if (form.controls.title.touched && form.controls.title.invalid) {
+      <p class="field-error">Informe o título.</p>
+    }
+
+    <label>
+      Texto de apoio
+      <input type="text" formControlName="subtitle" />
+    </label>
+
+    <label>
+      Imagem
+      <input type="text" formControlName="imageUrl" placeholder="URL ou assets/mock/banner-vitrine.svg" />
+    </label>
+    <button type="button" class="quiet" (click)="usePlaceholder()">Usar imagem de demonstração</button>
+    @if (form.controls.imageUrl.touched && form.controls.imageUrl.invalid) {
+      <p class="field-error">Informe a imagem.</p>
+    }
+
+    <label>
+      Link ao clicar
+      <input type="text" formControlName="link" placeholder="/produtos/feminino" />
+    </label>
+
+    <label>
+      Posição
+      <select formControlName="placement">
+        <option value="hero">Principal</option>
+        <option value="middle">Faixa</option>
+      </select>
+    </label>
+
+    <label>
+      Ordem
+      <input type="number" min="1" formControlName="displayOrder" />
+    </label>
+
+    <label class="check">
+      <input type="checkbox" formControlName="active" />
+      Exibir no catálogo
+    </label>
+
+    @if (formError(); as message) {
+      <p class="field-error" role="alert">{{ message }}</p>
+    }
+
+    <button class="primary" type="submit">Salvar</button>
+  </form>
+}

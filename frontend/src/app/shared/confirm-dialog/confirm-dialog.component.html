@@ -1,0 +1,8 @@
+<dialog #dialog>
+  <h2>Excluir este registro?</h2>
+  <p><ng-content /></p>
+  <div class="actions">
+    <button type="button" class="quiet" (click)="close()">Cancelar</button>
+    <button type="button" class="danger" (click)="confirm()">Excluir</button>
+  </div>
+</dialog>

@@ -1,0 +1,56 @@
+<header class="page-head">
+  <div>
+    <h1>Produtos</h1>
+    <p class="lead">Cadastre, edite, oculte ou exclua peças.</p>
+  </div>
+  <a class="primary" routerLink="/produtos/novo">Nova peça</a>
+</header>
+
+<label>
+  Buscar pelo nome
+  <input type="search" [value]="search()" (input)="onSearch($any($event.target).value)" />
+</label>
+
+@if (rows().length === 0) {
+  <p class="muted" role="status">Nenhum produto encontrado.</p>
+} @else {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Peça</th>
+          <th>Categoria</th>
+          <th>Preço</th>
+          <th>Situação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows(); track row.product.id) {
+          <tr>
+            <td>
+              <strong>{{ row.product.name }}</strong>
+              <div class="muted">{{ labels[row.product.gender] }}</div>
+            </td>
+            <td>{{ row.category }}</td>
+            <td>{{ row.product.price | brl }}</td>
+            <td>{{ row.product.available ? 'Disponível' : 'Indisponível' }}</td>
+            <td>
+              <div class="actions">
+                <a class="quiet" [routerLink]="['/produtos', row.product.id, 'editar']">Editar</a>
+                <button type="button" class="quiet" (click)="toggle(row.product.id, !row.product.available)">
+                  {{ row.product.available ? 'Ocultar' : 'Reativar' }}
+                </button>
+                <button type="button" class="danger" (click)="askDelete(row.product.id, confirm)">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+
+<app-confirm-dialog #confirm (confirmed)="confirmDelete()">
+  A peça sai do catálogo. Esta ação pede confirmação para evitar exclusão acidental.
+</app-confirm-dialog>

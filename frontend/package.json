@@ -1,0 +1,42 @@
+{
+  "name": "sempre-viva-admin",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Painel administrativo Sempre-Viva",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --port 4201",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "dependencies": {
+    "@angular/common": "21.2.25",
+    "@angular/compiler": "21.2.25",
+    "@angular/core": "21.2.25",
+    "@angular/forms": "21.2.25",
+    "@angular/platform-browser": "21.2.25",
+    "@angular/router": "21.2.25",
+    "@ionic/angular": "9.0.6",
+    "ionicons": "^8.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "21.2.25",
+    "@angular/cli": "21.2.25",
+    "@angular/compiler-cli": "21.2.25",
+    "@angular/language-service": "21.2.25",
+    "@ionic/angular-toolkit": "^12.2.0",
+    "angular-eslint": "^21.2.0",
+    "eslint": "^9.39.1",
+    "jsdom": "^26.0.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "~4.0.18"
+  }
+}

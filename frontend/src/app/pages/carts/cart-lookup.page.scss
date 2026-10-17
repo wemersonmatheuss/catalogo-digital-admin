@@ -1,0 +1,55 @@
+.lookup {
+  margin-bottom: 1rem;
+}
+
+.lookup .primary {
+  width: fit-content;
+}
+
+.result {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+}
+
+.result h2 {
+  margin: 0;
+  font-family: var(--sv-serif);
+  font-weight: 500;
+}
+
+.result ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.result li {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid var(--sv-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.result img {
+  width: 72px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.result p {
+  margin: 0.15rem 0 0;
+  color: var(--sv-muted);
+}
+
+.price {
+  color: #111;
+  font-weight: 600;
+}
