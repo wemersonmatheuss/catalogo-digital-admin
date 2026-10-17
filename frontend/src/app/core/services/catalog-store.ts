@@ -1,14 +1,13 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
+import { CatalogApiService } from '../api/catalog-api.service';
 import { CatalogSnapshot } from '../models/catalog.models';
 
 const empty: CatalogSnapshot = { categories: [], products: [], banners: [] };
 
 @Injectable({ providedIn: 'root' })
 export class CatalogStore {
-  private readonly http = inject(HttpClient);
+  private readonly api = inject(CatalogApiService);
   private readonly state = signal<CatalogSnapshot>(empty);
 
   readonly snapshot = this.state.asReadonly();
@@ -20,7 +19,7 @@ export class CatalogStore {
   }
 
   reload(): void {
-    this.http.get<CatalogSnapshot>(`${environment.apiUrl}/catalog`).subscribe({
+    this.api.getCatalog().subscribe({
       next: (data) => {
         this.state.set({
           categories: data.categories ?? [],
@@ -42,7 +41,7 @@ export class CatalogStore {
     }
     const copy = structuredClone(next);
     this.state.set(copy);
-    this.http.put<CatalogSnapshot>(`${environment.apiUrl}/catalog`, copy).subscribe({
+    this.api.replaceCatalog(copy).subscribe({
       error: () => {
         this.error.set('Não foi possível salvar. A API local não respondeu.');
       },

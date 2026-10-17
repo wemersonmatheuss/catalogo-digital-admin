@@ -1,25 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
+import { CartApiService, SavedCart } from '../../core/api/cart-api.service';
 import { BrlPipe } from '../../shared/brl.pipe';
-
-interface CartItem {
-  productId: string;
-  name: string;
-  price: number;
-  size: string | null;
-  color: string | null;
-  imageUrl: string;
-}
-
-interface SavedCart {
-  id: string;
-  createdAt: string;
-  items: CartItem[];
-}
 
 @Component({
   selector: 'app-cart-lookup-page',
@@ -29,7 +13,7 @@ interface SavedCart {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartLookupPage {
-  private readonly http = inject(HttpClient);
+  private readonly carts = inject(CartApiService);
 
   code = '';
   readonly loading = signal(false);
@@ -46,9 +30,7 @@ export class CartLookupPage {
     this.error.set(null);
     this.cart.set(null);
     try {
-      const cart = await firstValueFrom(
-        this.http.get<SavedCart>(`${environment.apiUrl}/carts/${encodeURIComponent(code)}`),
-      );
+      const cart = await firstValueFrom(this.carts.findByCode(code));
       this.cart.set(cart);
     } catch {
       this.error.set('Nenhum carrinho com esse código. Confira o ID da mensagem e se a API está no ar.');
