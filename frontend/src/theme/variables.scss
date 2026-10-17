@@ -1,21 +1,2 @@
-:root {
-  --sv-ink: #1c1917;
-  --sv-cream: #ffffff;
-  --sv-paper: #ffffff;
-  --sv-green: #111111;
-  --sv-gold: #111111;
-  --sv-line: #ececec;
-  --sv-muted: #6b625a;
-  --sv-serif: "Palatino Linotype", Palatino, Georgia, serif;
-  --sv-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-
-  --ion-color-primary: #111111;
-  --ion-color-primary-rgb: 17, 17, 17;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #0d0d0d;
-  --ion-color-primary-tint: #292929;
-  --ion-background-color: #ffffff;
-  --ion-text-color: #1c1917;
-  --ion-font-family: var(--sv-sans);
-}
+@use "../styles/abstracts/tokens";
+@use "../styles/abstracts/mixins" as *;
