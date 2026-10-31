@@ -1,4 +1,4 @@
-<a class="quiet" routerLink="/produtos">Voltar</a>
+<a class="back-link" routerLink="/produtos"><app-icon name="back" />Voltar para produtos</a>
 
 @if (missing()) {
   <h1>Peça não encontrada</h1>
@@ -6,95 +6,132 @@
 } @else {
   <header class="page-head">
     <div>
+      <p class="eyebrow">Catálogo</p>
       <h1>{{ editingId ? 'Editar peça' : 'Nova peça' }}</h1>
-      <p class="lead">Nome, preço, segmento, categoria, tamanhos, cores e imagem são obrigatórios.</p>
+      <p class="lead">Separe identificação, classificação, variações e fotos para revisar a peça antes de publicar.</p>
     </div>
   </header>
 
-  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <label>
-      Nome
-      <input type="text" formControlName="name" />
-    </label>
-    @if (form.controls.name.touched && form.controls.name.invalid) {
-      <p class="field-error">Informe o nome da peça.</p>
-    }
+  <form class="form form-wide" [formGroup]="form" (ngSubmit)="submit()">
+    <section class="form-section">
+      <h2>Identificação</h2>
+      <label>
+        Nome
+        <input type="text" formControlName="name" />
+      </label>
+      @if (form.controls.name.touched && form.controls.name.invalid) {
+        <p class="field-error">Informe o nome da peça.</p>
+      }
 
-    <label>
-      Descrição
-      <textarea formControlName="description"></textarea>
-    </label>
-    @if (form.controls.description.touched && form.controls.description.invalid) {
-      <p class="field-error">Informe a descrição.</p>
-    }
+      <label>
+        Descrição
+        <span class="hint">O que a cliente vê na página da peça.</span>
+        <textarea formControlName="description"></textarea>
+      </label>
+      @if (form.controls.description.touched && form.controls.description.invalid) {
+        <p class="field-error">Informe a descrição.</p>
+      }
+    </section>
 
-    <label>
-      Preço
-      <input type="number" min="0.01" step="0.01" formControlName="price" inputmode="decimal" />
-    </label>
-    @if (form.controls.price.touched && form.controls.price.invalid) {
-      <p class="field-error">Informe um preço maior que zero.</p>
-    }
+    <div class="form-grid">
+      <section class="form-section">
+        <h2>Classificação</h2>
+        <label>
+          Segmento
+          <select formControlName="gender" (change)="onGenderChange()">
+            <option value="female">{{ labels.female }}</option>
+            <option value="male">{{ labels.male }}</option>
+          </select>
+        </label>
 
-    <label>
-      Gênero
-      <select formControlName="gender" (change)="onGenderChange()">
-        <option value="female">{{ labels.female }}</option>
-        <option value="male">{{ labels.male }}</option>
-      </select>
-    </label>
-
-    <label>
-      Categoria
-      <select formControlName="categoryId">
-        <option value="">Selecione</option>
-        @for (category of categories(); track category.id) {
-          <option [value]="category.id">{{ category.name }}</option>
+        <label>
+          Categoria
+          <span class="hint">Só aparecem categorias ativas deste segmento.</span>
+          <select formControlName="categoryId">
+            <option value="">Selecione</option>
+            @for (category of categories(); track category.id) {
+              <option [value]="category.id">{{ category.name }}</option>
+            }
+          </select>
+        </label>
+        @if (form.controls.categoryId.touched && form.controls.categoryId.invalid) {
+          <p class="field-error">Escolha a categoria.</p>
         }
-      </select>
-    </label>
-    @if (form.controls.categoryId.touched && form.controls.categoryId.invalid) {
-      <p class="field-error">Escolha a categoria.</p>
-    }
+      </section>
 
-    <label>
-      Tamanhos
-      <input type="text" formControlName="sizes" placeholder="P, M, G" />
-    </label>
-    @if (form.controls.sizes.touched && form.controls.sizes.invalid) {
-      <p class="field-error">Informe ao menos um tamanho, separado por vírgula.</p>
-    }
+      <section class="form-section">
+        <h2>Preço e vitrine</h2>
+        <label>
+          Preço
+          <input type="number" min="0.01" step="0.01" formControlName="price" inputmode="decimal" />
+        </label>
+        @if (form.controls.price.touched && form.controls.price.invalid) {
+          <p class="field-error">Informe um preço maior que zero.</p>
+        }
 
-    <label>
-      Cores
-      <input type="text" formControlName="colors" placeholder="Preto, Areia" />
-    </label>
-    @if (form.controls.colors.touched && form.controls.colors.invalid) {
-      <p class="field-error">Informe ao menos uma cor, separada por vírgula.</p>
-    }
+        <div class="check-row">
+          <label class="check">
+            <input type="checkbox" formControlName="available" />
+            Disponível no catálogo
+          </label>
+          <label class="check">
+            <input type="checkbox" formControlName="featured" />
+            Mostrar em destaque na página inicial
+          </label>
+        </div>
+      </section>
+    </div>
 
-    <label>
-      Imagens
-      <textarea formControlName="images" placeholder="Uma URL por linha. A primeira é a principal."></textarea>
-    </label>
-    <button type="button" class="quiet" (click)="usePlaceholder()">Usar imagem de demonstração</button>
-    @if (form.controls.images.touched && form.controls.images.invalid) {
-      <p class="field-error">Informe ao menos uma imagem.</p>
-    }
+    <section class="form-section">
+      <h2>Variações</h2>
+      <p class="lead">Tamanhos e cores aparecem como opções na vitrine e na lista do painel.</p>
+      <div class="form-grid">
+        <label>
+          Tamanhos
+          <span class="hint">Separe por vírgula. Ex.: P, M, G</span>
+          <input type="text" formControlName="sizes" placeholder="P, M, G" />
+        </label>
+        <label>
+          Cores
+          <span class="hint">Separe por vírgula. Ex.: Preto, Areia</span>
+          <input type="text" formControlName="colors" placeholder="Preto, Areia" />
+        </label>
+      </div>
+      @if (form.controls.sizes.touched && form.controls.sizes.invalid) {
+        <p class="field-error">Informe ao menos um tamanho, separado por vírgula.</p>
+      }
+      @if (form.controls.colors.touched && form.controls.colors.invalid) {
+        <p class="field-error">Informe ao menos uma cor, separada por vírgula.</p>
+      }
+    </section>
 
-    <label class="check">
-      <input type="checkbox" formControlName="available" />
-      Disponível no catálogo
-    </label>
-    <label class="check">
-      <input type="checkbox" formControlName="featured" />
-      Produto em destaque
-    </label>
+    <section class="form-section">
+      <h2>Imagens</h2>
+      <p class="lead">A primeira linha é a foto principal da lista e da vitrine.</p>
+      <label>
+        Endereços
+        <textarea formControlName="images" placeholder="Uma URL por linha"></textarea>
+      </label>
+      <button type="button" class="quiet" (click)="usePlaceholder()">Usar imagem de demonstração</button>
+      @if (previewUrls().length > 0) {
+        <ul class="previews">
+          @for (url of previewUrls(); track url) {
+            <li><img [src]="url" alt="" /></li>
+          }
+        </ul>
+      }
+      @if (form.controls.images.touched && form.controls.images.invalid) {
+        <p class="field-error">Informe ao menos uma imagem.</p>
+      }
+    </section>
 
     @if (formError(); as message) {
       <p class="field-error" role="alert">{{ message }}</p>
     }
 
-    <button class="primary" type="submit">Salvar</button>
+    <div class="form-actions">
+      <button class="primary" type="submit"><app-icon name="check" />Salvar peça</button>
+      <a class="quiet" routerLink="/produtos">Cancelar</a>
+    </div>
   </form>
 }

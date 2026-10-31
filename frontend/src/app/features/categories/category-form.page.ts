@@ -6,10 +6,11 @@ import { Gender } from '../../core/models/catalog.models';
 import { GENDER_LABEL } from '../../core/models/catalog.labels';
 import { AdminCatalogService } from '../../core/services/admin-catalog.service';
 import { NoticeService } from '../../core/services/notice.service';
+import { IconComponent } from '../../shared/icon.component';
 
 @Component({
   selector: 'app-category-form-page',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, IconComponent],
   templateUrl: './category-form.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

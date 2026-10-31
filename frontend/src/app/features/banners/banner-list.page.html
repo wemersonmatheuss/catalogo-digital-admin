@@ -1,43 +1,48 @@
 <header class="page-head">
   <div>
+    <p class="eyebrow">Vitrine</p>
     <h1>Banners</h1>
-    <p class="lead">As imagens da vitrine aparecem na página inicial do catálogo.</p>
+    <p class="lead">O principal fica no topo da página inicial. A faixa aparece entre as seções de peças.</p>
   </div>
-  <a class="primary" routerLink="/banners/novo">Novo banner</a>
+  <a class="primary" routerLink="/banners/novo"><app-icon name="plus" />Novo banner</a>
 </header>
 
 @if (banners().length === 0) {
-  <p class="muted" role="status">Nenhum banner cadastrado.</p>
+  <div class="empty" role="status">
+    <strong>Nenhum banner cadastrado</strong>
+    <p class="muted">A página inicial fica sem destaque até existir um banner ativo.</p>
+  </div>
 } @else {
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Posição</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (banner of banners(); track banner.id) {
-          <tr>
-            <td>
+  <div class="record-list compact">
+    <div class="record-head" aria-hidden="true">
+      <span>Banner</span>
+      <span>Posição</span>
+      <span>Status</span>
+      <span>Ações</span>
+    </div>
+    <ul>
+      @for (banner of banners(); track banner.id) {
+        <li>
+          <div class="piece">
+            <img class="thumb" [src]="banner.imageUrl" alt="" />
+            <div>
               <strong>{{ banner.title }}</strong>
-              <div class="muted">{{ banner.subtitle }}</div>
-            </td>
-            <td>{{ banner.placement === 'hero' ? 'Principal' : 'Faixa' }}</td>
-            <td>{{ banner.active ? 'Ativo' : 'Oculto' }}</td>
-            <td>
-              <div class="actions">
-                <a class="quiet" [routerLink]="['/banners', banner.id, 'editar']">Editar</a>
-                <button type="button" class="danger" (click)="askDelete(banner.id, confirm)">Excluir</button>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+              <span class="muted">{{ banner.subtitle }}</span>
+            </div>
+          </div>
+          <div>{{ banner.placement === 'hero' ? 'Principal' : 'Faixa' }}</div>
+          <div class="status-col">
+            <span class="badge" [class.badge-ok]="banner.active" [class.badge-off]="!banner.active">
+              {{ banner.active ? 'Ativo' : 'Oculto' }}
+            </span>
+          </div>
+          <div class="actions">
+            <a class="quiet" [routerLink]="['/banners', banner.id, 'editar']"><app-icon name="edit" />Editar</a>
+            <button type="button" class="text-danger" (click)="askDelete(banner.id, confirm)"><app-icon name="trash" />Excluir</button>
+          </div>
+        </li>
+      }
+    </ul>
   </div>
 }
 

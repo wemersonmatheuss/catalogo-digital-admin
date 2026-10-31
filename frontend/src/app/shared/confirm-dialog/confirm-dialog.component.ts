@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, ElementRef, output, viewChild } from '@angular/core';
 
+import { IconComponent } from '../icon.component';
+
 @Component({
   selector: 'app-confirm-dialog',
+  imports: [IconComponent],
   templateUrl: './confirm-dialog.component.html',
   styleUrl: './confirm-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

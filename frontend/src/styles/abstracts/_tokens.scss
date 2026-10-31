@@ -1,13 +1,28 @@
 :root {
   --sv-ink: #1c1917;
-  --sv-cream: #ffffff;
+  --sv-cream: #f5f5f5;
   --sv-paper: #ffffff;
+  --sv-canvas: #f5f5f5;
   --sv-green: #111111;
   --sv-gold: #111111;
-  --sv-line: #ececec;
+  --sv-accent: #c4602c;
+  --sv-accent-dark: #a44e22;
+  --sv-accent-soft: #f8efe8;
+  --sv-line: #e5e5e5;
   --sv-muted: #6b625a;
-  --sv-serif: "Palatino Linotype", Palatino, Georgia, serif;
-  --sv-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --sv-ok: #111111;
+  --sv-ok-soft: #ffffff;
+  --sv-warn: #111111;
+  --sv-warn-soft: #f5f5f5;
+  --sv-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sv-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sv-1: 8px;
+  --sv-2: 16px;
+  --sv-3: 24px;
+  --sv-4: 32px;
+  --sv-5: 40px;
+  --sv-6: 48px;
+  --sv-radius: 8px;
 
   --ion-color-primary: #111111;
   --ion-color-primary-rgb: 17, 17, 17;
@@ -15,7 +30,7 @@
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #0d0d0d;
   --ion-color-primary-tint: #292929;
-  --ion-background-color: #ffffff;
-  --ion-text-color: #1c1917;
+  --ion-background-color: #f5f5f5;
+  --ion-text-color: #111111;
   --ion-font-family: var(--sv-sans);
 }

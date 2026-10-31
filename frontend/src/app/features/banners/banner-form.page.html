@@ -1,65 +1,81 @@
-<a class="quiet" routerLink="/banners">Voltar</a>
+<a class="back-link" routerLink="/banners"><app-icon name="back" />Voltar para banners</a>
 
 @if (missing()) {
   <h1>Banner não encontrado</h1>
 } @else {
   <header class="page-head">
     <div>
+      <p class="eyebrow">Vitrine</p>
       <h1>{{ editingId ? 'Editar banner' : 'Novo banner' }}</h1>
       <p class="lead">O banner principal fica no topo. A faixa aparece entre as seções de peças.</p>
     </div>
   </header>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <label>
-      Título
-      <input type="text" formControlName="title" />
-    </label>
-    @if (form.controls.title.touched && form.controls.title.invalid) {
-      <p class="field-error">Informe o título.</p>
-    }
+    <section class="form-section">
+      <h2>Conteúdo</h2>
+      <label>
+        Título
+        <input type="text" formControlName="title" />
+      </label>
+      @if (form.controls.title.touched && form.controls.title.invalid) {
+        <p class="field-error">Informe o título.</p>
+      }
 
-    <label>
-      Texto de apoio
-      <input type="text" formControlName="subtitle" />
-    </label>
+      <label>
+        Texto de apoio
+        <input type="text" formControlName="subtitle" />
+      </label>
 
-    <label>
-      Imagem
-      <input type="text" formControlName="imageUrl" placeholder="URL ou assets/mock/banner-vitrine.svg" />
-    </label>
-    <button type="button" class="quiet" (click)="usePlaceholder()">Usar imagem de demonstração</button>
-    @if (form.controls.imageUrl.touched && form.controls.imageUrl.invalid) {
-      <p class="field-error">Informe a imagem.</p>
-    }
+      <label>
+        Imagem
+        <span class="hint">URL ou um arquivo da pasta de demonstração.</span>
+        <input type="text" formControlName="imageUrl" placeholder="assets/mock/banner-vitrine.svg" />
+      </label>
+      <button type="button" class="quiet" (click)="usePlaceholder()">Usar imagem de demonstração</button>
+      @if (form.controls.imageUrl.value) {
+        <img class="banner-preview" [src]="form.controls.imageUrl.value" alt="" />
+      }
+      @if (form.controls.imageUrl.touched && form.controls.imageUrl.invalid) {
+        <p class="field-error">Informe a imagem.</p>
+      }
+    </section>
 
-    <label>
-      Link ao clicar
-      <input type="text" formControlName="link" placeholder="/produtos/feminino" />
-    </label>
+    <section class="form-section">
+      <h2>Publicação</h2>
+      <label>
+        Link ao clicar
+        <input type="text" formControlName="link" placeholder="/produtos/feminino" />
+      </label>
 
-    <label>
-      Posição
-      <select formControlName="placement">
-        <option value="hero">Principal</option>
-        <option value="middle">Faixa</option>
-      </select>
-    </label>
+      <div class="form-grid">
+        <label>
+          Posição
+          <select formControlName="placement">
+            <option value="hero">Principal</option>
+            <option value="middle">Faixa</option>
+          </select>
+        </label>
 
-    <label>
-      Ordem
-      <input type="number" min="1" formControlName="displayOrder" />
-    </label>
+        <label>
+          Ordem
+          <input type="number" min="1" formControlName="displayOrder" />
+        </label>
+      </div>
 
-    <label class="check">
-      <input type="checkbox" formControlName="active" />
-      Exibir no catálogo
-    </label>
+      <label class="check">
+        <input type="checkbox" formControlName="active" />
+        Exibir no catálogo
+      </label>
+    </section>
 
     @if (formError(); as message) {
       <p class="field-error" role="alert">{{ message }}</p>
     }
 
-    <button class="primary" type="submit">Salvar</button>
+    <div class="form-actions">
+      <button class="primary" type="submit"><app-icon name="check" />Salvar banner</button>
+      <a class="quiet" routerLink="/banners">Cancelar</a>
+    </div>
   </form>
 }

@@ -1,9 +1,10 @@
 <header class="page-head">
   <div>
+    <p class="eyebrow">Catálogo</p>
     <h1>Categorias</h1>
-    <p class="lead">O catálogo público só mostra categorias ativas.</p>
+    <p class="lead">O catálogo público só mostra categorias ativas. A contagem ajuda a ver onde ainda falta peça.</p>
   </div>
-  <a class="primary" routerLink="/categorias/nova">Nova categoria</a>
+  <a class="primary" routerLink="/categorias/nova"><app-icon name="plus" />Nova categoria</a>
 </header>
 
 @if (blockMessage(); as message) {
@@ -11,39 +12,47 @@
 }
 
 @if (categories().length === 0) {
-  <p class="muted" role="status">Nenhuma categoria cadastrada.</p>
+  <div class="empty" role="status">
+    <strong>Nenhuma categoria cadastrada</strong>
+    <p class="muted">Crie uma categoria antes de publicar peças.</p>
+  </div>
 } @else {
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Segmento</th>
-          <th>Peças</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (category of categories(); track category.id) {
-          <tr>
-            <td>{{ category.name }}</td>
-            <td>{{ labels[category.gender] }}</td>
-            <td>{{ count(category.id) }}</td>
-            <td>{{ category.status === 'active' ? 'Ativa' : 'Inativa' }}</td>
-            <td>
-              <div class="actions">
-                <a class="quiet" [routerLink]="['/categorias', category.id, 'editar']">Editar</a>
-                <button type="button" class="quiet" (click)="toggle(category.id, category.status !== 'active')">
-                  {{ category.status === 'active' ? 'Desativar' : 'Ativar' }}
-                </button>
-                <button type="button" class="danger" (click)="askDelete(category.id, confirm)">Excluir</button>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+  <div class="record-list compact">
+    <div class="record-head" aria-hidden="true">
+      <span>Categoria</span>
+      <span>Peças</span>
+      <span>Status</span>
+      <span>Ações</span>
+    </div>
+    <ul>
+      @for (category of categories(); track category.id; let first = $first, last = $last) {
+        <li>
+          <div class="piece">
+            <span class="thumb-fallback" aria-hidden="true">{{ category.name.slice(0, 1) }}</span>
+            <div>
+              <strong>{{ category.name }}</strong>
+              <span class="muted">{{ labels[category.gender] }}</span>
+            </div>
+          </div>
+          <div class="price-col">{{ count(category.id) }}</div>
+          <div class="status-col">
+            <span class="badge" [class.badge-ok]="category.status === 'active'" [class.badge-off]="category.status !== 'active'">
+              {{ category.status === 'active' ? 'Ativa' : 'Inativa' }}
+            </span>
+          </div>
+          <div class="actions">
+            <button type="button" class="quiet" [disabled]="first" (click)="move(category.id, -1)"><app-icon name="up" />Subir</button>
+            <button type="button" class="quiet" [disabled]="last" (click)="move(category.id, 1)"><app-icon name="down" />Descer</button>
+            <a class="quiet" [routerLink]="['/categorias', category.id, 'editar']"><app-icon name="edit" />Editar</a>
+            <button type="button" class="quiet" (click)="toggle(category.id, category.status !== 'active')">
+              <app-icon [name]="category.status === 'active' ? 'eye-off' : 'eye'" />
+              {{ category.status === 'active' ? 'Desativar' : 'Ativar' }}
+            </button>
+            <button type="button" class="text-danger" (click)="askDelete(category.id, confirm)"><app-icon name="trash" />Excluir</button>
+          </div>
+        </li>
+      }
+    </ul>
   </div>
 }
 

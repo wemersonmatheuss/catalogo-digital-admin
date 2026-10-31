@@ -1,44 +1,51 @@
-<a class="quiet" routerLink="/categorias">Voltar</a>
+<a class="back-link" routerLink="/categorias"><app-icon name="back" />Voltar para categorias</a>
 
 @if (missing()) {
   <h1>Categoria não encontrada</h1>
 } @else {
   <header class="page-head">
     <div>
+      <p class="eyebrow">Catálogo</p>
       <h1>{{ editingId ? 'Editar categoria' : 'Nova categoria' }}</h1>
       <p class="lead">O endereço da categoria é gerado a partir do nome.</p>
     </div>
   </header>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <label>
-      Nome
-      <input type="text" formControlName="name" />
-    </label>
-    @if (form.controls.name.touched && form.controls.name.invalid) {
-      <p class="field-error">Informe o nome.</p>
-    }
+    <section class="form-section">
+      <h2>Dados</h2>
+      <label>
+        Nome
+        <input type="text" formControlName="name" />
+      </label>
+      @if (form.controls.name.touched && form.controls.name.invalid) {
+        <p class="field-error">Informe o nome.</p>
+      }
 
-    <label>
-      Segmento
-      <select formControlName="gender">
-        <option value="female">{{ labels.female }}</option>
-        <option value="male">{{ labels.male }}</option>
-      </select>
-    </label>
+      <label>
+        Segmento
+        <select formControlName="gender">
+          <option value="female">{{ labels.female }}</option>
+          <option value="male">{{ labels.male }}</option>
+        </select>
+      </label>
 
-    <label>
-      Status
-      <select formControlName="status">
-        <option value="active">Ativa</option>
-        <option value="inactive">Inativa</option>
-      </select>
-    </label>
+      <label>
+        Status
+        <select formControlName="status">
+          <option value="active">Ativa</option>
+          <option value="inactive">Inativa</option>
+        </select>
+      </label>
+    </section>
 
     @if (formError(); as message) {
       <p class="field-error" role="alert">{{ message }}</p>
     }
 
-    <button class="primary" type="submit">Salvar</button>
+    <div class="form-actions">
+      <button class="primary" type="submit"><app-icon name="check" />Salvar categoria</button>
+      <a class="quiet" routerLink="/categorias">Cancelar</a>
+    </div>
   </form>
 }

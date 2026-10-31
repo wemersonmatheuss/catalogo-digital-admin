@@ -1,53 +1,109 @@
 <header class="page-head">
   <div>
+    <p class="eyebrow">Catálogo</p>
     <h1>Produtos</h1>
-    <p class="lead">Cadastre, edite, oculte ou exclua peças.</p>
+    <p class="lead">A ordem desta lista é a ordem do catálogo. Suba ou desça uma peça para mudar o lugar dela.</p>
   </div>
-  <a class="primary" routerLink="/produtos/novo">Nova peça</a>
+  <a class="primary" routerLink="/produtos/novo"><app-icon name="plus" />Nova peça</a>
 </header>
 
-<label>
-  Buscar pelo nome
-  <input type="search" [value]="search()" (input)="onSearch($any($event.target).value)" />
-</label>
+<div class="toolbar">
+  <label>
+    Buscar
+    <input type="search" [value]="search()" (input)="onSearch($any($event.target).value)" placeholder="Nome ou categoria" />
+  </label>
+  <div class="segment">
+    <p class="segment-label" id="filtro-segmento">Segmento</p>
+    <div class="segment-options" role="group" aria-labelledby="filtro-segmento">
+      <button type="button" [attr.aria-pressed]="genderFilter() === 'all'" (click)="setGender('all')">Todos</button>
+      <button type="button" [attr.aria-pressed]="genderFilter() === 'female'" (click)="setGender('female')">Feminino</button>
+      <button type="button" [attr.aria-pressed]="genderFilter() === 'male'" (click)="setGender('male')">Masculino</button>
+    </div>
+  </div>
+  <div class="segment">
+    <p class="segment-label" id="filtro-situacao">Situação</p>
+    <div class="segment-options" role="group" aria-labelledby="filtro-situacao">
+      <button type="button" [attr.aria-pressed]="availabilityFilter() === 'all'" (click)="setAvailability('all')">Todas</button>
+      <button type="button" [attr.aria-pressed]="availabilityFilter() === 'available'" (click)="setAvailability('available')">À venda</button>
+      <button type="button" [attr.aria-pressed]="availabilityFilter() === 'hidden'" (click)="setAvailability('hidden')">Ocultas</button>
+    </div>
+  </div>
+  <p class="toolbar-meta">{{ rows().length }} de {{ total() }} peças</p>
+</div>
 
-@if (rows().length === 0) {
-  <p class="muted" role="status">Nenhum produto encontrado.</p>
+@if (total() === 0) {
+  <div class="empty" role="status">
+    <strong>Nenhuma peça cadastrada</strong>
+    <p class="muted">Comece por uma categoria ativa e depois inclua a primeira peça.</p>
+  </div>
+} @else if (rows().length === 0) {
+  <div class="empty" role="status">
+    <strong>Nada com esses filtros</strong>
+    <p class="muted">Limpe a busca ou volte para “Todos” e “Todas”.</p>
+  </div>
 } @else {
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Peça</th>
-          <th>Categoria</th>
-          <th>Preço</th>
-          <th>Situação</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (row of rows(); track row.product.id) {
-          <tr>
-            <td>
+  <div class="record-list">
+    <div class="record-head" aria-hidden="true">
+      <span>Peça</span>
+      <span>Variações</span>
+      <span>Preço</span>
+      <span>Situação</span>
+      <span>Ações</span>
+    </div>
+    <ul>
+        @for (row of rows(); track row.product.id; let first = $first, last = $last) {
+        <li>
+          <div class="piece">
+            @if (cover(row.product); as image) {
+              <img class="thumb" [src]="image" [alt]="" />
+            } @else {
+              <span class="thumb-fallback" aria-hidden="true">{{ row.product.name.slice(0, 1) }}</span>
+            }
+            <div>
               <strong>{{ row.product.name }}</strong>
-              <div class="muted">{{ labels[row.product.gender] }}</div>
-            </td>
-            <td>{{ row.category }}</td>
-            <td>{{ row.product.price | brl }}</td>
-            <td>{{ row.product.available ? 'Disponível' : 'Indisponível' }}</td>
-            <td>
-              <div class="actions">
-                <a class="quiet" [routerLink]="['/produtos', row.product.id, 'editar']">Editar</a>
-                <button type="button" class="quiet" (click)="toggle(row.product.id, !row.product.available)">
-                  {{ row.product.available ? 'Ocultar' : 'Reativar' }}
-                </button>
-                <button type="button" class="danger" (click)="askDelete(row.product.id, confirm)">Excluir</button>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+              <span class="muted">{{ row.category }} · {{ labels[row.product.gender] }}</span>
+            </div>
+          </div>
+          <div class="variations">
+            <div class="chip-row">
+              @for (size of row.product.sizes.slice(0, 4); track size) {
+                <span class="chip">{{ size }}</span>
+              }
+              @if (row.product.sizes.length > 4) {
+                <span class="chip">+{{ row.product.sizes.length - 4 }}</span>
+              }
+            </div>
+            <div class="chip-row">
+              @for (color of row.product.colors.slice(0, 3); track color) {
+                <span class="chip">{{ color }}</span>
+              }
+              @if (row.product.colors.length > 3) {
+                <span class="chip">+{{ row.product.colors.length - 3 }}</span>
+              }
+            </div>
+          </div>
+          <div class="price-col">{{ row.product.price | brl }}</div>
+          <div class="status-col">
+            <span class="badge" [class.badge-ok]="row.product.available" [class.badge-off]="!row.product.available">
+              {{ row.product.available ? 'À venda' : 'Oculta' }}
+            </span>
+            @if (row.product.featured) {
+              <span class="badge badge-accent">Destaque</span>
+            }
+          </div>
+          <div class="actions">
+            <button type="button" class="quiet" [disabled]="first" (click)="move(row.product.id, -1)"><app-icon name="up" />Subir</button>
+            <button type="button" class="quiet" [disabled]="last" (click)="move(row.product.id, 1)"><app-icon name="down" />Descer</button>
+            <a class="quiet" [routerLink]="['/produtos', row.product.id, 'editar']"><app-icon name="edit" />Editar</a>
+            <button type="button" class="quiet" (click)="toggle(row.product.id, !row.product.available)">
+              <app-icon [name]="row.product.available ? 'eye-off' : 'eye'" />
+              {{ row.product.available ? 'Ocultar' : 'Reativar' }}
+            </button>
+            <button type="button" class="text-danger" (click)="askDelete(row.product.id, confirm)"><app-icon name="trash" />Excluir</button>
+          </div>
+        </li>
+      }
+    </ul>
   </div>
 }
 

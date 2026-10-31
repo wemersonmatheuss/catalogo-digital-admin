@@ -1,0 +1,355 @@
+@if (!section()) {
+  <header class="page-head">
+    <div>
+      <p class="eyebrow">Conteúdo</p>
+      <h1>Páginas da loja</h1>
+      <p class="lead">Cada bloco é uma parte da vitrine. Abra para editar o texto. Na página inicial, a ordem da lista é a ordem da loja.</p>
+    </div>
+  </header>
+
+  <div class="cms-map">
+    <section class="cms-region" aria-labelledby="grupo-loja">
+      <header class="cms-region-head">
+        <h2 id="grupo-loja">Loja</h2>
+        <p>O que se repete em todas as páginas.</p>
+      </header>
+      <ul class="part-list">
+        @for (part of parts(); track part.id) {
+          @if (part.group === 'Loja') {
+            <li>
+              <a [routerLink]="['/conteudo', part.id]">
+                <strong>{{ part.title }}</strong>
+                <span class="muted">{{ part.detail }}</span>
+              </a>
+              <span class="part-status" [class.off]="!part.visible">{{ part.visible ? 'Visível' : 'Oculta' }}</span>
+            </li>
+          }
+        }
+      </ul>
+    </section>
+
+    <section class="cms-region" aria-labelledby="grupo-home">
+      <header class="cms-region-head">
+        <h2 id="grupo-home">Página inicial</h2>
+        <p>De cima para baixo, como o cliente vê.</p>
+      </header>
+      <ul class="part-list ordered">
+        @for (part of parts(); track part.id; let index = $index) {
+          @if (part.group === 'Página inicial') {
+            <li>
+              <span class="part-index">{{ part.order }}</span>
+              <a [routerLink]="['/conteudo', part.id]">
+                <strong>{{ part.title }}</strong>
+                <span class="muted">{{ part.detail }}</span>
+              </a>
+              <span class="part-status" [class.off]="!part.visible">{{ part.visible ? 'Visível' : 'Oculta' }}</span>
+              <div class="actions">
+                <button type="button" class="quiet" [disabled]="index === 1" (click)="moveBlock(part.id, -1)"><app-icon name="up" />Subir</button>
+                <button type="button" class="quiet" [disabled]="index === parts().length - 3" (click)="moveBlock(part.id, 1)"><app-icon name="down" />Descer</button>
+              </div>
+            </li>
+          }
+        }
+      </ul>
+    </section>
+
+    <section class="cms-region" aria-labelledby="grupo-fim">
+      <header class="cms-region-head">
+        <h2 id="grupo-fim">Fechamento</h2>
+        <p>Rodapé e os textos do carrinho.</p>
+      </header>
+      <ul class="part-list">
+        @for (part of parts(); track part.id) {
+          @if (part.group === 'Fechamento') {
+            <li>
+              <a [routerLink]="['/conteudo', part.id]">
+                <strong>{{ part.title }}</strong>
+                <span class="muted">{{ part.detail }}</span>
+              </a>
+              <span class="part-status" [class.off]="!part.visible">{{ part.visible ? 'Visível' : 'Oculta' }}</span>
+            </li>
+          }
+        }
+      </ul>
+    </section>
+  </div>
+} @else if (!known()) {
+  <a class="back-link" routerLink="/conteudo"><app-icon name="back" />Todas as partes</a>
+  <h1>Parte não encontrada</h1>
+} @else {
+  <a class="back-link" routerLink="/conteudo"><app-icon name="back" />Todas as partes</a>
+  <header class="page-head">
+    <div>
+      <p class="eyebrow">Conteúdo</p>
+      <h1>{{ title() }}</h1>
+    </div>
+    @if (saved()) {
+      <p class="toolbar-meta">Alterações salvas na loja</p>
+    }
+  </header>
+
+  <div class="stack">
+    @if (section() === 'cabecalho') {
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Marca</h2>
+        </div>
+        <div class="form">
+          <label>
+            Nome da loja
+            <input [value]="draft().brand" (input)="setBrand(valueOf($event))" />
+          </label>
+          <label>
+            Título da aba do navegador
+            <input [value]="draft().seoTitle" (input)="setSeo('seoTitle', valueOf($event))" />
+          </label>
+          <label>
+            Descrição para buscas
+            <textarea [value]="draft().seoDescription" (input)="setSeo('seoDescription', valueOf($event))"></textarea>
+          </label>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Menu</h2>
+            <p>A ordem desta lista é a ordem do menu.</p>
+          </div>
+        </div>
+        <ol class="cms-order">
+          @for (item of draft().nav; track item.id; let index = $index, first = $first, last = $last) {
+            <li>
+              <span class="part-index">{{ index + 1 }}</span>
+              <div class="cms-order-main">
+                <label>
+                  Texto
+                  <input [value]="item.label" (input)="setNavLabel(index, valueOf($event))" [attr.aria-label]="'Texto do menu ' + (index + 1)" />
+                </label>
+              </div>
+              <div class="actions">
+                <button type="button" class="quiet" [disabled]="first" (click)="moveNav(index, -1)"><app-icon name="up" />Subir</button>
+                <button type="button" class="quiet" [disabled]="last" (click)="moveNav(index, 1)"><app-icon name="down" />Descer</button>
+              </div>
+            </li>
+          }
+        </ol>
+      </section>
+    }
+
+    @if (block(); as current) {
+      @if (current.type === 'hero') {
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Botão</h2>
+          </div>
+          <label class="check">
+            <input type="checkbox" [checked]="current.visible" (change)="toggleBlock(blockIndex(), !current.visible)" />
+            Mostrar esta parte na loja
+          </label>
+          <div class="form">
+            <label>
+              Texto do botão
+              <input [value]="current.cta" (input)="setBlockText(blockIndex(), 'cta', valueOf($event))" />
+            </label>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Slides</h2>
+              <p>O primeiro é o que abre a página.</p>
+            </div>
+          </div>
+          <ol class="cms-order">
+            @for (banner of heroBanners(); track banner.id; let bannerIndex = $index, bannerFirst = $first, bannerLast = $last) {
+              <li>
+                <span class="part-index">{{ bannerIndex + 1 }}</span>
+                <div class="cms-order-main">
+                  <label>
+                    Título
+                    <input [value]="banner.title" (input)="setBannerText(banner, 'title', valueOf($event))" />
+                  </label>
+                  <label>
+                    Texto
+                    <input [value]="banner.subtitle" (input)="setBannerText(banner, 'subtitle', valueOf($event))" />
+                  </label>
+                </div>
+                <div class="actions">
+                  <button type="button" class="quiet" [disabled]="bannerFirst" (click)="moveBanner(banner.id, -1)"><app-icon name="up" />Subir</button>
+                  <button type="button" class="quiet" [disabled]="bannerLast" (click)="moveBanner(banner.id, 1)"><app-icon name="down" />Descer</button>
+                </div>
+              </li>
+            }
+          </ol>
+        </section>
+      }
+
+      @if (current.type === 'products' || current.type === 'categories') {
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Textos</h2>
+          </div>
+          <label class="check">
+            <input type="checkbox" [checked]="current.visible" (change)="toggleBlock(blockIndex(), !current.visible)" />
+            Mostrar esta parte na loja
+          </label>
+          <div class="form">
+            <label>
+              Texto pequeno
+              <input [value]="current.eyebrow" (input)="setBlockText(blockIndex(), 'eyebrow', valueOf($event))" />
+            </label>
+            <label>
+              Título
+              <input [value]="current.title" (input)="setBlockText(blockIndex(), 'title', valueOf($event))" />
+            </label>
+            <label>
+              Link da seção
+              <input [value]="current.linkLabel" (input)="setBlockText(blockIndex(), 'linkLabel', valueOf($event))" />
+            </label>
+          </div>
+        </section>
+      }
+
+      @if (current.type === 'strips') {
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Faixas</h2>
+              <p>A ordem é a ordem entre as seções.</p>
+            </div>
+          </div>
+          <label class="check">
+            <input type="checkbox" [checked]="current.visible" (change)="toggleBlock(blockIndex(), !current.visible)" />
+            Mostrar esta parte na loja
+          </label>
+          <ol class="cms-order">
+            @for (banner of stripBanners(); track banner.id; let bannerIndex = $index, bannerFirst = $first, bannerLast = $last) {
+              <li>
+                <span class="part-index">{{ bannerIndex + 1 }}</span>
+                <div class="cms-order-main">
+                  <label>
+                    Título
+                    <input [value]="banner.title" (input)="setBannerText(banner, 'title', valueOf($event))" />
+                  </label>
+                  <label>
+                    Texto
+                    <input [value]="banner.subtitle" (input)="setBannerText(banner, 'subtitle', valueOf($event))" />
+                  </label>
+                </div>
+                <div class="actions">
+                  <button type="button" class="quiet" [disabled]="bannerFirst" (click)="moveBanner(banner.id, -1)"><app-icon name="up" />Subir</button>
+                  <button type="button" class="quiet" [disabled]="bannerLast" (click)="moveBanner(banner.id, 1)"><app-icon name="down" />Descer</button>
+                </div>
+              </li>
+            }
+          </ol>
+        </section>
+      }
+    }
+
+    @if (section() === 'rodape') {
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Sobre a loja</h2>
+        </div>
+        <div class="form">
+          <label>
+            Título
+            <input [value]="draft().footer.aboutTitle" (input)="setFooter('aboutTitle', valueOf($event))" />
+          </label>
+          <label>
+            Texto
+            <textarea [value]="draft().footer.aboutText" (input)="setFooter('aboutText', valueOf($event))"></textarea>
+          </label>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Catálogo e contato</h2>
+        </div>
+        <div class="form">
+          <label>
+            Título do catálogo
+            <input [value]="draft().footer.catalogTitle" (input)="setFooter('catalogTitle', valueOf($event))" />
+          </label>
+          <label>
+            Título do contato
+            <input [value]="draft().footer.contactTitle" (input)="setFooter('contactTitle', valueOf($event))" />
+          </label>
+          <label>
+            Cidade
+            <input [value]="draft().footer.city" (input)="setFooter('city', valueOf($event))" />
+          </label>
+          <label>
+            Texto do WhatsApp
+            <input [value]="draft().footer.whatsappLabel" (input)="setFooter('whatsappLabel', valueOf($event))" />
+          </label>
+          <label>
+            Botão flutuante
+            <input [value]="draft().footer.floatLabel" (input)="setFooter('floatLabel', valueOf($event))" />
+          </label>
+        </div>
+      </section>
+    }
+
+    @if (section() === 'carrinho') {
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Título</h2>
+        </div>
+        <div class="form">
+          <label>
+            Texto pequeno
+            <input [value]="draft().bag.eyebrow" (input)="setBag('eyebrow', valueOf($event))" />
+          </label>
+          <label>
+            Título
+            <input [value]="draft().bag.title" (input)="setBag('title', valueOf($event))" />
+          </label>
+          <label>
+            Continuar comprando
+            <input [value]="draft().bag.continueLabel" (input)="setBag('continueLabel', valueOf($event))" />
+          </label>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Carrinho vazio</h2>
+        </div>
+        <div class="form">
+          <label>
+            Título
+            <input [value]="draft().bag.emptyTitle" (input)="setBag('emptyTitle', valueOf($event))" />
+          </label>
+          <label>
+            Explicação
+            <textarea [value]="draft().bag.emptyMessage" (input)="setBag('emptyMessage', valueOf($event))"></textarea>
+          </label>
+          <label>
+            Botão para ver peças
+            <input [value]="draft().bag.browseLabel" (input)="setBag('browseLabel', valueOf($event))" />
+          </label>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Envio</h2>
+        </div>
+        <div class="form">
+          <label>
+            Título dos dados
+            <input [value]="draft().bag.dataTitle" (input)="setBag('dataTitle', valueOf($event))" />
+          </label>
+          <label>
+            Orientação
+            <input [value]="draft().bag.dataHint" (input)="setBag('dataHint', valueOf($event))" />
+          </label>
+          <label>
+            Botão de envio
+            <input [value]="draft().bag.sendLabel" (input)="setBag('sendLabel', valueOf($event))" />
+          </label>
+        </div>
+      </section>
+    }
+  </div>
+}

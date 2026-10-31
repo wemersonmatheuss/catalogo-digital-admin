@@ -1,19 +1,23 @@
 <header class="page-head">
   <div>
+    <p class="eyebrow">Atendimento</p>
     <h1>Carrinhos</h1>
-    <p class="lead">Busque pelo código que a cliente enviou no WhatsApp para ver as peças escolhidas.</p>
+    <p class="lead">Use o código que a cliente enviou no WhatsApp para ver as peças escolhidas.</p>
   </div>
 </header>
 
-<form class="form lookup" (ngSubmit)="search()">
-  <label>
-    Código do carrinho
-    <input name="code" [(ngModel)]="code" placeholder="SV-AB12CD" autocomplete="off" />
-  </label>
-  <button class="primary" type="submit" [disabled]="loading()">
-    {{ loading() ? 'Buscando…' : 'Buscar' }}
-  </button>
-</form>
+<section class="panel">
+  <form class="form lookup" (ngSubmit)="search()">
+    <label>
+      Código do carrinho
+      <span class="hint">O código começa com SV-.</span>
+      <input name="code" [(ngModel)]="code" placeholder="SV-AB12CD" autocomplete="off" />
+    </label>
+    <button class="primary" type="submit" [disabled]="loading()">
+      {{ loading() ? 'Buscando…' : 'Buscar' }}
+    </button>
+  </form>
+</section>
 
 @if (error(); as message) {
   <p class="field-error" role="alert">{{ message }}</p>
@@ -22,6 +26,7 @@
 @if (cart(); as found) {
   <section class="result">
     <header>
+      <p class="eyebrow">Sacola encontrada</p>
       <h2>{{ found.id }}</h2>
       <p class="muted">Enviado em {{ when(found.createdAt) }}</p>
     </header>
@@ -33,7 +38,6 @@
           }
           <div>
             <strong>{{ item.name }}</strong>
-            <p>ID da peça: {{ item.productId }}</p>
             <p>{{ item.size || 'Sem tamanho' }} · {{ item.color || 'Sem cor' }}</p>
             <p class="price">{{ item.price | brl }}</p>
           </div>

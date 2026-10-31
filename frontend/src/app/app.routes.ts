@@ -21,6 +21,14 @@ export const routes: Routes = [
         loadComponent: () => import('./features/dashboard/dashboard.page').then((m) => m.DashboardPage),
       },
       {
+        path: 'conteudo',
+        loadComponent: () => import('./features/content/content.page').then((m) => m.ContentPage),
+      },
+      {
+        path: 'conteudo/:section',
+        loadComponent: () => import('./features/content/content.page').then((m) => m.ContentPage),
+      },
+      {
         path: 'produtos',
         loadComponent: () => import('./features/products/product-list.page').then((m) => m.ProductListPage),
       },

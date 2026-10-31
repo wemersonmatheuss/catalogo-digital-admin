@@ -5,10 +5,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BannerPlacement } from '../../core/models/catalog.models';
 import { AdminCatalogService } from '../../core/services/admin-catalog.service';
 import { NoticeService } from '../../core/services/notice.service';
+import { IconComponent } from '../../shared/icon.component';
 
 @Component({
   selector: 'app-banner-form-page',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, IconComponent],
   templateUrl: './banner-form.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -3,34 +3,55 @@
     <button type="button" class="menu" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()">
       Menu
     </button>
-    <p class="brand">Sempre-Viva <span>Painel</span></p>
+    <p class="brand">Sempre-Viva</p>
     <p class="who">{{ email() }}</p>
   </header>
 
+  @if (menuOpen()) {
+    <button type="button" class="backdrop" (click)="closeMenu()" aria-label="Fechar menu"></button>
+  }
+
   <div class="body">
     <nav [class.open]="menuOpen()" aria-label="Painel administrativo">
+      <div class="brand-block">
+        <p class="brand">Sempre-Viva</p>
+        <p class="brand-sub">Painel da loja</p>
+      </div>
+
+      <p class="nav-label">Geral</p>
+      <a routerLink="/conteudo" routerLinkActive="is-active" (click)="closeMenu()">Conteúdo</a>
       <a routerLink="/dashboard" routerLinkActive="is-active" (click)="closeMenu()">Painel</a>
+
+      <p class="nav-label">Catálogo</p>
       <a routerLink="/produtos" routerLinkActive="is-active" (click)="closeMenu()">Produtos</a>
-      <a routerLink="/banners" routerLinkActive="is-active" (click)="closeMenu()">Banners</a>
       <a routerLink="/categorias" routerLinkActive="is-active" (click)="closeMenu()">Categorias</a>
+      <a routerLink="/banners" routerLinkActive="is-active" (click)="closeMenu()">Banners</a>
+
+      <p class="nav-label">Atendimento</p>
       <a routerLink="/carrinhos" routerLinkActive="is-active" (click)="closeMenu()">Carrinhos</a>
-      <button type="button" (click)="logout()">Sair</button>
+
+      <div class="nav-foot">
+        <p class="who">{{ email() }}</p>
+        <button type="button" (click)="logout()">Sair</button>
+      </div>
     </nav>
 
     <main id="conteudo">
-      @if (notice.text(); as message) {
-        <p class="notice" role="status">
-          {{ message }}
-          <button type="button" (click)="notice.clear()">Fechar</button>
-        </p>
-      }
-      @if (catalog.error(); as failure) {
-        <p class="field-error" role="alert">{{ failure }}</p>
-      } @else if (!catalog.ready()) {
-        <p class="muted">Carregando dados do catálogo…</p>
-      } @else {
-        <router-outlet />
-      }
+      <div class="page">
+        @if (notice.text(); as message) {
+          <p class="notice" role="status">
+            {{ message }}
+            <button type="button" (click)="notice.clear()">Fechar</button>
+          </p>
+        }
+        @if (catalog.error(); as failure) {
+          <p class="field-error" role="alert">{{ failure }}</p>
+        } @else if (!catalog.ready()) {
+          <p class="muted">Carregando dados do catálogo…</p>
+        } @else {
+          <router-outlet />
+        }
+      </div>
     </main>
   </div>
 </div>

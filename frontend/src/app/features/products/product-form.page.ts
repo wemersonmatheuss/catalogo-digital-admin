@@ -8,10 +8,11 @@ import { Gender } from '../../core/models/catalog.models';
 import { GENDER_LABEL } from '../../core/models/catalog.labels';
 import { AdminCatalogService } from '../../core/services/admin-catalog.service';
 import { NoticeService } from '../../core/services/notice.service';
+import { IconComponent } from '../../shared/icon.component';
 
 @Component({
   selector: 'app-product-form-page',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, IconComponent],
   templateUrl: './product-form.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,6 +45,11 @@ export class ProductFormPage {
   });
 
   readonly categories = computed(() => this.catalog.categoriesFor(this.gender()));
+  private readonly imageText = toSignal(
+    this.form.controls.images.valueChanges.pipe(startWith(this.form.controls.images.value)),
+    { initialValue: this.form.controls.images.value },
+  );
+  readonly previewUrls = computed(() => splitLines(this.imageText()).slice(0, 4));
 
   constructor() {
     if (!this.editingId) {

@@ -2,7 +2,7 @@ dialog {
   max-width: 28rem;
   padding: 1.25rem;
   border: 0;
-  border-radius: 16px;
+  border-radius: 8px;
 }
 
 dialog::backdrop {
@@ -29,7 +29,7 @@ p {
 button {
   min-height: 44px;
   padding: 0 0.9rem;
-  border-radius: 999px;
+  border-radius: 8px;
   font: inherit;
   cursor: pointer;
 }

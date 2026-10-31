@@ -1,16 +1,109 @@
 <header class="page-head">
   <div>
+    <p class="eyebrow">Visão geral</p>
     <h1>Painel</h1>
-    <p class="lead">Visão rápida do catálogo. Os números vêm dos dados salvos na API local.</p>
+    <p class="lead">O que está na vitrine agora: peças, segmentos e o que precisa de atenção.</p>
   </div>
-  <a class="primary" routerLink="/produtos/novo">Nova peça</a>
+  <div class="actions">
+    <a class="quiet" routerLink="/categorias/nova"><app-icon name="plus" />Nova categoria</a>
+    <a class="primary" routerLink="/produtos/novo"><app-icon name="plus" />Nova peça</a>
+  </div>
 </header>
 
-<section class="cards" aria-label="Indicadores do catálogo">
-  <article class="card"><span>Produtos</span><strong>{{ stats().products }}</strong></article>
-  <article class="card"><span>Disponíveis</span><strong>{{ stats().available }}</strong></article>
-  <article class="card"><span>Indisponíveis</span><strong>{{ stats().unavailable }}</strong></article>
-  <article class="card"><span>Categorias ativas</span><strong>{{ stats().categories }}</strong></article>
-  <article class="card"><span>Femininos</span><strong>{{ stats().female }}</strong></article>
-  <article class="card"><span>Masculinos</span><strong>{{ stats().male }}</strong></article>
-</section>
+<div class="dashboard-grid">
+  <section class="panel span-2" aria-labelledby="estoque-titulo">
+    <div class="panel-head">
+      <h2 id="estoque-titulo">Estoque da vitrine</h2>
+      <a routerLink="/produtos">Ver produtos</a>
+    </div>
+    <div class="metrics metrics-wide">
+      <article class="metric">
+        <span>Produtos</span>
+        <strong>{{ stats().products }}</strong>
+        <small>cadastrados</small>
+      </article>
+      <article class="metric tone-ok">
+        <span>À venda</span>
+        <strong>{{ stats().available }}</strong>
+        <small>visíveis no catálogo</small>
+      </article>
+      <article class="metric" [class.tone-warn]="stats().unavailable > 0">
+        <span>Ocultos</span>
+        <strong>{{ stats().unavailable }}</strong>
+        <small>fora da vitrine</small>
+      </article>
+      <article class="metric tone-accent">
+        <span>Destaques</span>
+        <strong>{{ structure().featured }}</strong>
+        <small>na página inicial</small>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="segmento-titulo">
+    <div class="panel-head">
+      <h2 id="segmento-titulo">Por segmento</h2>
+    </div>
+    @if (stats().products === 0) {
+      <p class="muted">Ainda não há peças para comparar feminino e masculino.</p>
+    } @else {
+      <div class="share">
+        <div class="share-track" aria-hidden="true">
+          <span [style.width.%]="femaleShare()"></span>
+          <span [style.width.%]="100 - femaleShare()"></span>
+        </div>
+        <p class="share-legend">
+          <span>Feminino <strong>{{ stats().female }}</strong></span>
+          <span>Masculino <strong>{{ stats().male }}</strong></span>
+        </p>
+      </div>
+    }
+  </section>
+
+  <section class="panel" aria-labelledby="estrutura-titulo">
+    <div class="panel-head">
+      <h2 id="estrutura-titulo">Estrutura</h2>
+    </div>
+    <div class="metrics">
+      <article class="metric">
+        <span>Categorias ativas</span>
+        <strong>{{ stats().categories }}</strong>
+        <small>{{ structure().inactiveCategories }} inativas</small>
+      </article>
+      <article class="metric">
+        <span>Banners ativos</span>
+        <strong>{{ structure().activeBanners }}</strong>
+        <small>{{ structure().banners }} no total</small>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel span-2" aria-labelledby="recentes-titulo">
+    <div class="panel-head">
+      <h2 id="recentes-titulo">Peças recentes</h2>
+      <a routerLink="/produtos">Abrir lista</a>
+    </div>
+    @if (recent().length === 0) {
+      <p class="muted">Nenhuma peça cadastrada ainda.</p>
+    } @else {
+      <ul class="recent-list">
+        @for (row of recent(); track row.product.id) {
+          <li>
+            <a [routerLink]="['/produtos', row.product.id, 'editar']">
+              @if (cover(row.product); as image) {
+                <img [src]="image" [alt]="" />
+              } @else {
+                <span class="thumb-fallback" aria-hidden="true">{{ row.product.name.slice(0, 1) }}</span>
+              }
+              <span class="identity">
+                <strong>{{ row.product.name }}</strong>
+                <span class="muted">{{ row.category }} · {{ labels[row.product.gender] }}</span>
+              </span>
+              <span class="price-col">{{ row.product.price | brl }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</div>
