@@ -199,101 +199,10 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 1,
+      "displayOrder": 0,
       "createdAt": "2026-09-18T12:00:00.000Z",
-      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "updatedAt": "2026-10-31T14:36:49.442Z",
       "compareAtPrice": 149.9
-    },
-    {
-      "id": "demo-calca-reta",
-      "name": "Calça reta",
-      "slug": "calca-reta-demonstracao",
-      "description": "Peça fictícia para demonstrar a listagem.",
-      "price": 149.9,
-      "gender": "female",
-      "categoryId": "cat-f-calca",
-      "sizes": [
-        "36",
-        "38",
-        "40",
-        "42"
-      ],
-      "colors": [
-        "Areia",
-        "Preto"
-      ],
-      "images": [
-        {
-          "url": "https://images.pexels.com/photos/3701283/pexels-photo-3701283.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
-          "alt": "Calça reta feminina bege",
-          "isPrimary": true
-        }
-      ],
-      "available": true,
-      "featured": true,
-      "displayOrder": 2,
-      "createdAt": "2026-09-12T12:00:00.000Z",
-      "updatedAt": "2026-09-20T12:00:00.000Z",
-      "compareAtPrice": 249.9
-    },
-    {
-      "id": "demo-bermuda-feminina",
-      "name": "Bermuda alfaiataria",
-      "slug": "bermuda-alfaiataria-demonstracao",
-      "description": "Peça fictícia da categoria Bermuda.",
-      "price": 99.9,
-      "gender": "female",
-      "categoryId": "cat-f-bermuda",
-      "sizes": [
-        "P",
-        "M",
-        "G"
-      ],
-      "colors": [
-        "Bege"
-      ],
-      "images": [
-        {
-          "url": "https://images.pexels.com/photos/18173611/pexels-photo-18173611.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
-          "alt": "Bermuda alfaiataria feminina bege",
-          "isPrimary": true
-        }
-      ],
-      "available": true,
-      "featured": false,
-      "displayOrder": 3,
-      "createdAt": "2026-09-08T12:00:00.000Z",
-      "updatedAt": "2026-09-20T12:00:00.000Z",
-      "compareAtPrice": 169.9
-    },
-    {
-      "id": "demo-pijama-feminino",
-      "name": "Pijama curto",
-      "slug": "pijama-curto-demonstracao",
-      "description": "Peça fictícia marcada como indisponível.",
-      "price": 79.9,
-      "gender": "female",
-      "categoryId": "cat-f-pijama",
-      "sizes": [
-        "P",
-        "M"
-      ],
-      "colors": [
-        "Rosa queimado"
-      ],
-      "images": [
-        {
-          "url": "https://images.pexels.com/photos/20356186/pexels-photo-20356186.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
-          "alt": "Pijama curto de cetim branco",
-          "isPrimary": true
-        }
-      ],
-      "available": false,
-      "featured": false,
-      "displayOrder": 4,
-      "createdAt": "2026-09-22T12:00:00.000Z",
-      "updatedAt": "2026-09-20T12:00:00.000Z",
-      "compareAtPrice": 139.9
     },
     {
       "id": "demo-camiseta",
@@ -328,6 +237,38 @@
       "compareAtPrice": 99.9
     },
     {
+      "id": "demo-calca-reta",
+      "name": "Calça reta",
+      "slug": "calca-reta-demonstracao",
+      "description": "Peça fictícia para demonstrar a listagem.",
+      "price": 149.9,
+      "gender": "female",
+      "categoryId": "cat-f-calca",
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "colors": [
+        "Areia",
+        "Preto"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/3701283/pexels-photo-3701283.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Calça reta feminina bege",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": true,
+      "displayOrder": 2,
+      "createdAt": "2026-09-12T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 249.9
+    },
+    {
       "id": "demo-camisa-social",
       "name": "Camisa social",
       "slug": "camisa-social-demonstracao",
@@ -359,10 +300,40 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 2,
+      "displayOrder": 3,
       "createdAt": "2026-09-15T12:00:00.000Z",
       "updatedAt": "2026-09-20T12:00:00.000Z",
       "compareAtPrice": 219.9
+    },
+    {
+      "id": "demo-bermuda-feminina",
+      "name": "Bermuda alfaiataria",
+      "slug": "bermuda-alfaiataria-demonstracao",
+      "description": "Peça fictícia da categoria Bermuda.",
+      "price": 99.9,
+      "gender": "female",
+      "categoryId": "cat-f-bermuda",
+      "sizes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "colors": [
+        "Bege"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/18173611/pexels-photo-18173611.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Bermuda alfaiataria feminina bege",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 4,
+      "createdAt": "2026-09-08T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 169.9
     },
     {
       "id": "demo-bermuda-masculina",
@@ -390,10 +361,39 @@
       ],
       "available": true,
       "featured": false,
-      "displayOrder": 4,
+      "displayOrder": 5,
       "createdAt": "2026-09-19T12:00:00.000Z",
       "updatedAt": "2026-09-20T12:00:00.000Z",
       "compareAtPrice": 189.9
+    },
+    {
+      "id": "demo-pijama-feminino",
+      "name": "Pijama curto",
+      "slug": "pijama-curto-demonstracao",
+      "description": "Peça fictícia marcada como indisponível.",
+      "price": 79.9,
+      "gender": "female",
+      "categoryId": "cat-f-pijama",
+      "sizes": [
+        "P",
+        "M"
+      ],
+      "colors": [
+        "Rosa queimado"
+      ],
+      "images": [
+        {
+          "url": "https://images.pexels.com/photos/20356186/pexels-photo-20356186.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+          "alt": "Pijama curto de cetim branco",
+          "isPrimary": true
+        }
+      ],
+      "available": false,
+      "featured": false,
+      "displayOrder": 6,
+      "createdAt": "2026-09-22T12:00:00.000Z",
+      "updatedAt": "2026-09-20T12:00:00.000Z",
+      "compareAtPrice": 139.9
     },
     {
       "id": "demo-blusa-listrada",
@@ -403,8 +403,16 @@
       "price": 74.9,
       "gender": "female",
       "categoryId": "cat-f-blusa",
-      "sizes": ["P", "M", "G", "GG"],
-      "colors": ["Azul marinho", "Vermelho"],
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "colors": [
+        "Azul marinho",
+        "Vermelho"
+      ],
       "images": [
         {
           "url": "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
@@ -414,82 +422,10 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 5,
+      "displayOrder": 7,
       "createdAt": "2026-09-23T12:00:00.000Z",
       "updatedAt": "2026-09-23T12:00:00.000Z",
       "compareAtPrice": 119.9
-    },
-    {
-      "id": "demo-calca-palazzo",
-      "name": "Calça palazzo",
-      "slug": "calca-palazzo-demonstracao",
-      "description": "Calça de perna larga com tecido fluido e cintura alta.",
-      "price": 169.9,
-      "gender": "female",
-      "categoryId": "cat-f-calca",
-      "sizes": ["36", "38", "40", "42", "44"],
-      "colors": ["Bege", "Preto"],
-      "images": [
-        {
-          "url": "https://images.unsplash.com/photo-1684214553643-71d8d6234e09?w=600&h=750&fit=crop&auto=format",
-          "alt": "Calça palazzo de perna larga",
-          "isPrimary": true
-        }
-      ],
-      "available": true,
-      "featured": false,
-      "displayOrder": 6,
-      "createdAt": "2026-09-24T12:00:00.000Z",
-      "updatedAt": "2026-09-24T12:00:00.000Z",
-      "compareAtPrice": 269.9
-    },
-    {
-      "id": "demo-bermuda-jeans-f",
-      "name": "Bermuda jeans",
-      "slug": "bermuda-jeans-feminina-demonstracao",
-      "description": "Bermuda jeans com cintura alta e acabamento desfiado.",
-      "price": 119.9,
-      "gender": "female",
-      "categoryId": "cat-f-bermuda",
-      "sizes": ["36", "38", "40", "42"],
-      "colors": ["Azul claro", "Azul escuro"],
-      "images": [
-        {
-          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=750&fit=crop&auto=format",
-          "alt": "Bermuda jeans feminina",
-          "isPrimary": true
-        }
-      ],
-      "available": true,
-      "featured": false,
-      "displayOrder": 7,
-      "createdAt": "2026-09-25T12:00:00.000Z",
-      "updatedAt": "2026-09-25T12:00:00.000Z",
-      "compareAtPrice": 189.9
-    },
-    {
-      "id": "demo-pijama-longo-f",
-      "name": "Pijama longo de cetim",
-      "slug": "pijama-longo-cetim-demonstracao",
-      "description": "Pijama longo com calça e camisa de cetim, caimento suave.",
-      "price": 139.9,
-      "gender": "female",
-      "categoryId": "cat-f-pijama",
-      "sizes": ["P", "M", "G"],
-      "colors": ["Rosa nude", "Marfim"],
-      "images": [
-        {
-          "url": "https://images.unsplash.com/photo-1770294758981-484ef12c1815?w=600&h=750&fit=crop&auto=format",
-          "alt": "Pijama longo de cetim rosa",
-          "isPrimary": true
-        }
-      ],
-      "available": true,
-      "featured": false,
-      "displayOrder": 8,
-      "createdAt": "2026-09-26T12:00:00.000Z",
-      "updatedAt": "2026-09-26T12:00:00.000Z",
-      "compareAtPrice": 219.9
     },
     {
       "id": "demo-camiseta-polo",
@@ -499,8 +435,17 @@
       "price": 89.9,
       "gender": "male",
       "categoryId": "cat-m-camiseta",
-      "sizes": ["P", "M", "G", "GG"],
-      "colors": ["Branco", "Verde musgo", "Bege"],
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "colors": [
+        "Branco",
+        "Verde musgo",
+        "Bege"
+      ],
       "images": [
         {
           "url": "https://images.unsplash.com/photo-1625910513399-c9fcba54338c?w=600&h=750&fit=crop&auto=format",
@@ -510,10 +455,43 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 5,
+      "displayOrder": 8,
       "createdAt": "2026-09-27T12:00:00.000Z",
       "updatedAt": "2026-09-27T12:00:00.000Z",
       "compareAtPrice": 149.9
+    },
+    {
+      "id": "demo-calca-palazzo",
+      "name": "Calça palazzo",
+      "slug": "calca-palazzo-demonstracao",
+      "description": "Calça de perna larga com tecido fluido e cintura alta.",
+      "price": 169.9,
+      "gender": "female",
+      "categoryId": "cat-f-calca",
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42",
+        "44"
+      ],
+      "colors": [
+        "Bege",
+        "Preto"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1684214553643-71d8d6234e09?w=600&h=750&fit=crop&auto=format",
+          "alt": "Calça palazzo de perna larga",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 9,
+      "createdAt": "2026-09-24T12:00:00.000Z",
+      "updatedAt": "2026-09-24T12:00:00.000Z",
+      "compareAtPrice": 269.9
     },
     {
       "id": "demo-camisa-xadrez",
@@ -523,8 +501,16 @@
       "price": 109.9,
       "gender": "male",
       "categoryId": "cat-m-camisa-social",
-      "sizes": ["1", "2", "3", "4"],
-      "colors": ["Azul/Branco", "Verde/Preto"],
+      "sizes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "colors": [
+        "Azul/Branco",
+        "Verde/Preto"
+      ],
       "images": [
         {
           "url": "https://images.pexels.com/photos/769733/pexels-photo-769733.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
@@ -534,10 +520,42 @@
       ],
       "available": true,
       "featured": false,
-      "displayOrder": 6,
+      "displayOrder": 10,
       "createdAt": "2026-09-28T12:00:00.000Z",
       "updatedAt": "2026-09-28T12:00:00.000Z",
       "compareAtPrice": 179.9
+    },
+    {
+      "id": "demo-bermuda-jeans-f",
+      "name": "Bermuda jeans",
+      "slug": "bermuda-jeans-feminina-demonstracao",
+      "description": "Bermuda jeans com cintura alta e acabamento desfiado.",
+      "price": 119.9,
+      "gender": "female",
+      "categoryId": "cat-f-bermuda",
+      "sizes": [
+        "36",
+        "38",
+        "40",
+        "42"
+      ],
+      "colors": [
+        "Azul claro",
+        "Azul escuro"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=750&fit=crop&auto=format",
+          "alt": "Bermuda jeans feminina",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 11,
+      "createdAt": "2026-09-25T12:00:00.000Z",
+      "updatedAt": "2026-09-25T12:00:00.000Z",
+      "compareAtPrice": 189.9
     },
     {
       "id": "demo-bermuda-sport",
@@ -547,8 +565,17 @@
       "price": 79.9,
       "gender": "male",
       "categoryId": "cat-m-bermuda",
-      "sizes": ["P", "M", "G", "GG"],
-      "colors": ["Preto", "Cinza", "Marinho"],
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "colors": [
+        "Preto",
+        "Cinza",
+        "Marinho"
+      ],
       "images": [
         {
           "url": "https://images.unsplash.com/photo-1591741543032-bf439b4fd46c?w=600&h=750&fit=crop&auto=format",
@@ -558,7 +585,7 @@
       ],
       "available": true,
       "featured": false,
-      "displayOrder": 7,
+      "displayOrder": 12,
       "createdAt": "2026-09-29T12:00:00.000Z",
       "updatedAt": "2026-09-29T12:00:00.000Z",
       "compareAtPrice": 129.9
@@ -571,8 +598,17 @@
       "price": 189.9,
       "gender": "male",
       "categoryId": "cat-m-calca",
-      "sizes": ["38", "40", "42", "44", "46"],
-      "colors": ["Azul médio", "Azul escuro"],
+      "sizes": [
+        "38",
+        "40",
+        "42",
+        "44",
+        "46"
+      ],
+      "colors": [
+        "Azul médio",
+        "Azul escuro"
+      ],
       "images": [
         {
           "url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=750&fit=crop&auto=format",
@@ -582,10 +618,41 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 8,
+      "displayOrder": 13,
       "createdAt": "2026-09-30T12:00:00.000Z",
       "updatedAt": "2026-09-30T12:00:00.000Z",
       "compareAtPrice": 299.9
+    },
+    {
+      "id": "demo-pijama-longo-f",
+      "name": "Pijama longo de cetim",
+      "slug": "pijama-longo-cetim-demonstracao",
+      "description": "Pijama longo com calça e camisa de cetim, caimento suave.",
+      "price": 139.9,
+      "gender": "female",
+      "categoryId": "cat-f-pijama",
+      "sizes": [
+        "P",
+        "M",
+        "G"
+      ],
+      "colors": [
+        "Rosa nude",
+        "Marfim"
+      ],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1770294758981-484ef12c1815?w=600&h=750&fit=crop&auto=format",
+          "alt": "Pijama longo de cetim rosa",
+          "isPrimary": true
+        }
+      ],
+      "available": true,
+      "featured": false,
+      "displayOrder": 14,
+      "createdAt": "2026-09-26T12:00:00.000Z",
+      "updatedAt": "2026-09-26T12:00:00.000Z",
+      "compareAtPrice": 219.9
     },
     {
       "id": "demo-terno",
@@ -595,8 +662,16 @@
       "price": 599.9,
       "gender": "male",
       "categoryId": "cat-m-terno",
-      "sizes": ["48", "50", "52", "54"],
-      "colors": ["Marinho", "Carvão"],
+      "sizes": [
+        "48",
+        "50",
+        "52",
+        "54"
+      ],
+      "colors": [
+        "Marinho",
+        "Carvão"
+      ],
       "images": [
         {
           "url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=750&fit=crop&auto=format",
@@ -606,7 +681,7 @@
       ],
       "available": true,
       "featured": true,
-      "displayOrder": 9,
+      "displayOrder": 15,
       "createdAt": "2026-10-01T12:00:00.000Z",
       "updatedAt": "2026-10-01T12:00:00.000Z",
       "compareAtPrice": 899.9
@@ -619,8 +694,16 @@
       "price": 99.9,
       "gender": "male",
       "categoryId": "cat-m-pijama",
-      "sizes": ["P", "M", "G", "GG"],
-      "colors": ["Azul listrado", "Cinza"],
+      "sizes": [
+        "P",
+        "M",
+        "G",
+        "GG"
+      ],
+      "colors": [
+        "Azul listrado",
+        "Cinza"
+      ],
       "images": [
         {
           "url": "https://images.pexels.com/photos/20364756/pexels-photo-20364756.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
@@ -630,7 +713,7 @@
       ],
       "available": true,
       "featured": false,
-      "displayOrder": 10,
+      "displayOrder": 16,
       "createdAt": "2026-10-02T12:00:00.000Z",
       "updatedAt": "2026-10-02T12:00:00.000Z",
       "compareAtPrice": 159.9
@@ -697,5 +780,110 @@
       "createdAt": "2026-09-20T12:00:00.000Z",
       "updatedAt": "2026-09-20T12:00:00.000Z"
     }
-  ]
+  ],
+  "content": {
+    "brand": "Sempre-Viva",
+    "seoTitle": "Sempre-Viva",
+    "seoDescription": "Catálogo digital da Sempre-Viva, loja de roupas em Gravatá, Pernambuco.",
+    "nav": [
+      {
+        "id": "home",
+        "label": "Início",
+        "href": "/",
+        "exact": true
+      },
+      {
+        "id": "female",
+        "label": "Feminino",
+        "href": "/produtos/feminino",
+        "exact": false
+      },
+      {
+        "id": "male",
+        "label": "Masculino",
+        "href": "/produtos/masculino",
+        "exact": false
+      },
+      {
+        "id": "pieces",
+        "label": "Peças",
+        "href": "/produtos",
+        "exact": true
+      }
+    ],
+    "blocks": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "visible": true,
+        "cta": "Explorar a coleção"
+      },
+      {
+        "id": "recent",
+        "type": "products",
+        "source": "recent",
+        "visible": true,
+        "eyebrow": "Últimas chegadas",
+        "title": "Novidades",
+        "linkLabel": "Ver todos",
+        "link": "/produtos"
+      },
+      {
+        "id": "strips",
+        "type": "strips",
+        "visible": true
+      },
+      {
+        "id": "featured",
+        "type": "products",
+        "source": "featured",
+        "visible": true,
+        "eyebrow": "Mais vendidos",
+        "title": "Em destaque",
+        "linkLabel": "Ver todos",
+        "link": "/produtos"
+      },
+      {
+        "id": "female-categories",
+        "type": "categories",
+        "gender": "female",
+        "visible": true,
+        "eyebrow": "Roupas e acessórios",
+        "title": "Feminino",
+        "linkLabel": "Ver todos",
+        "link": "/produtos/feminino"
+      },
+      {
+        "id": "male-categories",
+        "type": "categories",
+        "gender": "male",
+        "visible": true,
+        "eyebrow": "Roupas e acessórios",
+        "title": "Masculino",
+        "linkLabel": "Ver todos",
+        "link": "/produtos/masculino"
+      }
+    ],
+    "footer": {
+      "aboutTitle": "A loja",
+      "aboutText": "Catálogo de roupas da Sempre-Viva, em Gravatá, Pernambuco. Peças para o dia a dia, com atendimento pelo WhatsApp.",
+      "catalogTitle": "Catálogo",
+      "contactTitle": "Contato",
+      "city": "Gravatá, Pernambuco",
+      "whatsappLabel": "Falar com a loja",
+      "floatLabel": "WhatsApp",
+      "mark": "Sempre-Viva"
+    },
+    "bag": {
+      "eyebrow": "Sua seleção",
+      "title": "Carrinho",
+      "continueLabel": "Continuar vendo",
+      "emptyTitle": "Nenhuma peça no carrinho",
+      "emptyMessage": "Navegue pelo catálogo e adicione o que gostar.",
+      "browseLabel": "Ver coleção",
+      "dataTitle": "Seus dados",
+      "dataHint": "Preencha para facilitar o atendimento no WhatsApp.",
+      "sendLabel": "Falar no WhatsApp"
+    }
+  }
 }

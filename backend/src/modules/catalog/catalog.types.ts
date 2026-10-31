@@ -1,3 +1,5 @@
+import type { SiteContent } from './site-content.js';
+
 export interface ProductImage {
   url: string;
   alt: string;
@@ -10,6 +12,7 @@ export interface Category {
   slug: string;
   gender: string;
   status: string;
+  displayOrder?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -52,4 +55,5 @@ export interface CatalogSnapshot {
   categories: Category[];
   products: Product[];
   banners: Banner[];
+  content?: SiteContent;
 }

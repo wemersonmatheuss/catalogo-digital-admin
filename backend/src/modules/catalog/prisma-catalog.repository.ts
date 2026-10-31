@@ -109,7 +109,11 @@ function toBanner(row: {
 
 function fromCategory(category: Category): Prisma.CategoryCreateManyInput {
   return {
-    ...category,
+    id: category.id,
+    name: category.name,
+    slug: category.slug,
+    gender: category.gender,
+    status: category.status,
     createdAt: new Date(category.createdAt),
     updatedAt: new Date(category.updatedAt),
   };

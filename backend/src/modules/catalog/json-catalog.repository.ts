@@ -18,6 +18,7 @@ export class JsonCatalogRepository implements CatalogRepository {
       categories: data.categories ?? [],
       products: data.products ?? [],
       banners: data.banners ?? [],
+      content: data.content,
     };
   }
 
