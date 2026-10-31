@@ -1,3 +1,5 @@
+import { SiteContent } from './site-content';
+
 export type Gender = 'female' | 'male';
 
 export type CatalogStatus = 'active' | 'inactive';
@@ -8,6 +10,7 @@ export interface Category {
   slug: string;
   gender: Gender;
   status: CatalogStatus;
+  displayOrder?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -72,4 +75,5 @@ export interface CatalogSnapshot {
   categories: Category[];
   products: Product[];
   banners: Banner[];
+  content?: SiteContent;
 }

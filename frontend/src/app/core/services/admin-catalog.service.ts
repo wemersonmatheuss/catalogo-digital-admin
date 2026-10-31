@@ -1,6 +1,7 @@
 import { Injectable, computed, inject } from '@angular/core';
 
 import { Banner, BannerPlacement, Category, Gender, Product, ProductImage } from '../models/catalog.models';
+import { SiteContent, defaultSiteContent } from '../models/site-content';
 import { slugify } from '../utils/slug';
 import { CatalogStore } from './catalog-store';
 
@@ -42,6 +43,7 @@ export class AdminCatalogService {
   readonly categories = computed(() => this.store.snapshot().categories);
   readonly products = computed(() => this.store.snapshot().products);
   readonly banners = computed(() => this.store.snapshot().banners ?? []);
+  readonly content = computed(() => this.store.snapshot().content ?? defaultSiteContent());
 
   readonly stats = computed(() => {
     const products = this.products();
@@ -161,6 +163,7 @@ export class AdminCatalogService {
       slug,
       gender: input.gender,
       status: input.status,
+      displayOrder: current?.displayOrder,
       createdAt: current?.createdAt ?? now,
       updatedAt: now,
     };
@@ -241,11 +244,61 @@ export class AdminCatalogService {
     return { ok: true, message: 'Banner excluído.' };
   }
 
-  private write(next: { categories?: Category[]; products?: Product[]; banners?: Banner[] }): void {
+  saveContent(content: SiteContent): void {
+    this.write({ content });
+  }
+
+  moveProduct(id: string, direction: -1 | 1, visibleIds?: string[]): ActionResult {
+    const products = reorder(this.products(), id, direction, visibleIds, (item) => item.displayOrder ?? Number.MAX_SAFE_INTEGER);
+    if (!products) {
+      return { ok: false, message: 'Essa peça já está no limite da lista.' };
+    }
+    this.write({ products });
+    return { ok: true, message: 'Ordem dos produtos atualizada.' };
+  }
+
+  moveCategory(id: string, direction: -1 | 1): ActionResult {
+    const categories = reorder(this.categories(), id, direction, undefined, (item) => item.displayOrder ?? Number.MAX_SAFE_INTEGER);
+    if (!categories) {
+      return { ok: false, message: 'Essa categoria já está no limite da lista.' };
+    }
+    this.write({ categories });
+    return { ok: true, message: 'Ordem das categorias atualizada.' };
+  }
+
+  moveBanner(id: string, direction: -1 | 1): ActionResult {
+    const current = this.bannerById(id);
+    if (!current) {
+      return { ok: false, message: 'Banner não encontrado.' };
+    }
+    const samePlace = this.banners().filter((banner) => banner.placement === current.placement);
+    const moved = reorder(samePlace, id, direction, undefined, (item) => item.displayOrder);
+    if (!moved) {
+      return { ok: false, message: 'Esse banner já está no limite do grupo.' };
+    }
+    const byId = new Map(moved.map((banner) => [banner.id, banner]));
+    this.write({ banners: this.banners().map((banner) => byId.get(banner.id) ?? banner) });
+    return { ok: true, message: 'Ordem dos banners atualizada.' };
+  }
+
+  patchBannerText(id: string, title: string, subtitle: string): void {
+    const banners = this.banners().map((banner) =>
+      banner.id === id ? { ...banner, title, subtitle, updatedAt: new Date().toISOString() } : banner,
+    );
+    this.write({ banners });
+  }
+
+  private write(next: {
+    categories?: Category[];
+    products?: Product[];
+    banners?: Banner[];
+    content?: SiteContent;
+  }): void {
     this.store.replace({
       categories: next.categories ?? this.categories(),
       products: next.products ?? this.products(),
       banners: next.banners ?? this.banners(),
+      content: next.content ?? this.content(),
     });
   }
 
@@ -276,4 +329,29 @@ function roundPrice(value: number): number {
 
 function takenProductSlugs(products: Product[], ignoreId?: string): Set<string> {
   return new Set(products.filter((product) => product.id !== ignoreId).map((product) => product.slug));
+}
+
+function reorder<T extends { id: string }>(
+  items: T[],
+  id: string,
+  direction: -1 | 1,
+  visibleIds: string[] | undefined,
+  orderOf: (item: T) => number,
+): T[] | null {
+  const sorted = [...items].sort((a, b) => orderOf(a) - orderOf(b) || a.id.localeCompare(b.id));
+  const pool = visibleIds ? sorted.filter((item) => visibleIds.includes(item.id)) : sorted;
+  const from = pool.findIndex((item) => item.id === id);
+  const to = from + direction;
+  if (from < 0 || to < 0 || to >= pool.length) {
+    return null;
+  }
+  const nextPool = pool.slice();
+  const [item] = nextPool.splice(from, 1);
+  nextPool.splice(to, 0, item);
+  const slots = pool.map((entry) => sorted.indexOf(entry));
+  const next = sorted.slice();
+  slots.forEach((slot, index) => {
+    next[slot] = nextPool[index];
+  });
+  return next.map((entry, index) => ({ ...entry, displayOrder: index }));
 }
